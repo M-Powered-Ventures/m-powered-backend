@@ -567,6 +567,7 @@ export interface ApiWebsiteSettingWebsiteSetting
   extends Struct.CollectionTypeSchema {
   collectionName: 'website_settings';
   info: {
+    description: '';
     displayName: 'Website Setting';
     pluralName: 'website-settings';
     singularName: 'website-setting';
@@ -577,6 +578,7 @@ export interface ApiWebsiteSettingWebsiteSetting
   attributes: {
     contact_number: Schema.Attribute.String;
     contact_us_link: Schema.Attribute.String;
+    copyright_text: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

@@ -4,7 +4,8 @@
   "info": {
     "singularName": "website-setting",
     "pluralName": "website-settings",
-    "displayName": "Website Setting"
+    "displayName": "Website Setting",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -26,6 +27,9 @@
       "type": "string"
     },
     "twiter_link": {
+      "type": "string"
+    },
+    "copyright_text": {
       "type": "string"
     }
   }
