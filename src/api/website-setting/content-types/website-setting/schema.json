@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "website_settings",
+  "info": {
+    "singularName": "website-setting",
+    "pluralName": "website-settings",
+    "displayName": "Website Setting"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "support_email": {
+      "type": "string"
+    },
+    "contact_number": {
+      "type": "string"
+    },
+    "contact_us_link": {
+      "type": "string"
+    },
+    "facebook_link": {
+      "type": "string"
+    },
+    "linkedIn_link": {
+      "type": "string"
+    },
+    "twiter_link": {
+      "type": "string"
+    }
+  }
+}

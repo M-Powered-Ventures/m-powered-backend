@@ -563,6 +563,40 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiWebsiteSettingWebsiteSetting
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'website_settings';
+  info: {
+    displayName: 'Website Setting';
+    pluralName: 'website-settings';
+    singularName: 'website-setting';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    contact_number: Schema.Attribute.String;
+    contact_us_link: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    facebook_link: Schema.Attribute.String;
+    linkedIn_link: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::website-setting.website-setting'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    support_email: Schema.Attribute.String;
+    twiter_link: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -1078,6 +1112,7 @@ declare module '@strapi/strapi' {
       'api::category.category': ApiCategoryCategory;
       'api::faq.faq': ApiFaqFaq;
       'api::global.global': ApiGlobalGlobal;
+      'api::website-setting.website-setting': ApiWebsiteSettingWebsiteSetting;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
