@@ -22,6 +22,14 @@ module.exports = {
           data[collectionName] = { error: `Failed to fetch ${collectionName}` };
         }
       }
+
+      // delete the original collection with - in the name
+      for (const collectionName of Object.keys(data)) {
+        if (collectionName.includes("-")) {
+          delete data[collectionName];
+        }
+      }
+
       ctx.body = data;
     } catch (error) {
       console.error("Main Error:", error);
