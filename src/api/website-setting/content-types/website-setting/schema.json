@@ -71,6 +71,23 @@
     },
     "address_heading": {
       "type": "string"
+    },
+    "linkdin_logo": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "twiter_logo": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "complete_address": {
+      "type": "text"
     }
   }
 }

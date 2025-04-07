@@ -792,6 +792,7 @@ export interface ApiWebsiteSettingWebsiteSetting
   };
   attributes: {
     address_heading: Schema.Attribute.String;
+    complete_address: Schema.Attribute.Text;
     contact_number_1: Schema.Attribute.String;
     contact_number_2: Schema.Attribute.String;
     contact_us_button_link: Schema.Attribute.String;
@@ -806,6 +807,7 @@ export interface ApiWebsiteSettingWebsiteSetting
     footer_logo: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     footer_text: Schema.Attribute.Text;
     header_logo: Schema.Attribute.Media<'images'>;
+    linkdin_logo: Schema.Attribute.Media<'images'>;
     linkedIn_link: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -817,6 +819,7 @@ export interface ApiWebsiteSettingWebsiteSetting
     services_heading: Schema.Attribute.String;
     support_email: Schema.Attribute.String;
     twiter_link: Schema.Attribute.String;
+    twiter_logo: Schema.Attribute.Media<'images'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
