@@ -13,6 +13,11 @@ module.exports = {
           data[collectionName] = await strapi.entityService.findMany(type, {
             populate: "*", // specify the fields to populate
           });
+
+          // replace - in the name with _ in the  collection name
+          const formattedCollectionName = collectionName.replace(/-/g, "_");
+          // replace - in the name with _ in the  collection name
+          data[formattedCollectionName] = data[collectionName];
         } catch (fetchError) {
           data[collectionName] = { error: `Failed to fetch ${collectionName}` };
         }

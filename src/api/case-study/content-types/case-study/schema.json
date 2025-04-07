@@ -2,8 +2,8 @@
   "kind": "collectionType",
   "collectionName": "case_studies",
   "info": {
-    "singularName": "case_study",
-    "pluralName": "case_studies",
+    "singularName": "case-study",
+    "pluralName": "case-studies",
     "displayName": "Case Study",
     "description": ""
   },
