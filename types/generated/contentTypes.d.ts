@@ -687,6 +687,7 @@ export interface ApiHomePageSettingHomePageSetting
     build_something_content: Schema.Attribute.Blocks;
     businesses_description_text: Schema.Attribute.Text;
     businesses_heading_text: Schema.Attribute.String;
+    case_studies_description: Schema.Attribute.Text;
     concept_to_mvp_decription_text: Schema.Attribute.Text &
       Schema.Attribute.Required;
     concept_to_mvp_heading_text: Schema.Attribute.String &
@@ -708,6 +709,7 @@ export interface ApiHomePageSettingHomePageSetting
     > &
       Schema.Attribute.Private;
     make_us_diffrent_image: Schema.Attribute.Media<'images'>;
+    our_case_studies_heading: Schema.Attribute.String;
     our_services_description_text: Schema.Attribute.Text;
     our_services_heading_text: Schema.Attribute.String &
       Schema.Attribute.Required;

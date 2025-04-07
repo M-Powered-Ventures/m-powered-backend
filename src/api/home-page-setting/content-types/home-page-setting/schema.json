@@ -140,6 +140,12 @@
     },
     "guide_tech_content": {
       "type": "blocks"
+    },
+    "our_case_studies_heading": {
+      "type": "string"
+    },
+    "case_studies_description": {
+      "type": "text"
     }
   }
 }
