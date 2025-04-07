@@ -8,7 +8,11 @@ module.exports = {
       for (const type of contentTypes) {
         const collectionName = type.split("::")[1].split(".")[0];
         try {
-          data[collectionName] = await strapi.entityService.findMany(type);
+          // populate the data for each collection
+
+          data[collectionName] = await strapi.entityService.findMany(type, {
+            populate: "*", // specify the fields to populate
+          });
         } catch (fetchError) {
           data[collectionName] = { error: `Failed to fetch ${collectionName}` };
         }
