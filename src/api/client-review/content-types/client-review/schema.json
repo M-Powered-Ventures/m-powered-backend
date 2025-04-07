@@ -2,8 +2,8 @@
   "kind": "collectionType",
   "collectionName": "client_reviews",
   "info": {
-    "singularName": "client-review",
-    "pluralName": "client-reviews",
+    "singularName": "client_review",
+    "pluralName": "client_reviews",
     "displayName": "Client Review",
     "description": ""
   },

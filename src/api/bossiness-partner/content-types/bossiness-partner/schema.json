@@ -2,8 +2,8 @@
   "kind": "collectionType",
   "collectionName": "bossiness_partners",
   "info": {
-    "singularName": "bossiness-partner",
-    "pluralName": "bossiness-partners",
+    "singularName": "bossiness_partner",
+    "pluralName": "bossiness_partners",
     "displayName": "Bossiness Partner"
   },
   "options": {
