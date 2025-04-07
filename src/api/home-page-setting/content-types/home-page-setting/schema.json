@@ -1,0 +1,123 @@
+{
+  "kind": "collectionType",
+  "collectionName": "home_page_settings",
+  "info": {
+    "singularName": "home-page-setting",
+    "pluralName": "home-page-settings",
+    "displayName": "Home Page Setting"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "banner_text": {
+      "type": "text",
+      "required": true
+    },
+    "startups_heading_text": {
+      "type": "string",
+      "required": true
+    },
+    "startups_description_text": {
+      "type": "text"
+    },
+    "pitch_your_idea_button_text": {
+      "type": "string"
+    },
+    "pitch_your_idea_button_link": {
+      "type": "string"
+    },
+    "businesses_heading_text": {
+      "type": "string"
+    },
+    "businesses_description_text": {
+      "type": "text"
+    },
+    "request_a_consultation_button_text": {
+      "type": "string",
+      "required": true
+    },
+    "request_a_consultation_button_link": {
+      "type": "string"
+    },
+    "banner_image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "section_image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "we_do_not_just_invest_heading_text": {
+      "type": "string"
+    },
+    "we_do_not_just_invest_description_text": {
+      "type": "text"
+    },
+    "concept_to_mvp_heading_text": {
+      "type": "string",
+      "required": true
+    },
+    "concept_to_mvp_decription_text": {
+      "type": "text",
+      "required": true
+    },
+    "focus_on_growth_heading_text": {
+      "type": "string",
+      "required": true
+    },
+    "focus_on_growth_description_text": {
+      "type": "text",
+      "required": true
+    },
+    "our_services_heading_text": {
+      "type": "string",
+      "required": true
+    },
+    "our_services_description_text": {
+      "type": "text"
+    },
+    "what_makes_us_different_heading_text": {
+      "type": "string"
+    },
+    "what_makes_us_different_description_text": {
+      "type": "text"
+    },
+    "what_makes_us_different_image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "what_our_client_says_heading_text": {
+      "type": "string"
+    },
+    "what_our_client_says_description_text": {
+      "type": "text"
+    },
+    "how_it_works_heading_text": {
+      "type": "string"
+    },
+    "how_it_works_description_text": {
+      "type": "text"
+    }
+  }
+}
