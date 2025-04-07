@@ -1,5 +1,5 @@
 {
-  "kind": "collectionType",
+  "kind": "singleType",
   "collectionName": "home_page_settings",
   "info": {
     "singularName": "home-page-setting",

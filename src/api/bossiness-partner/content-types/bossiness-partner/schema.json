@@ -4,18 +4,20 @@
   "info": {
     "singularName": "bossiness-partner",
     "pluralName": "bossiness-partners",
-    "displayName": "Bossiness Partner"
+    "displayName": "Business Partner",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "attributes": {
     "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     }
   }
 }

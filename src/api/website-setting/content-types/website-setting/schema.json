@@ -1,5 +1,5 @@
 {
-  "kind": "collectionType",
+  "kind": "singleType",
   "collectionName": "website_settings",
   "info": {
     "singularName": "website-setting",
@@ -14,7 +14,7 @@
     "support_email": {
       "type": "string"
     },
-    "contact_number": {
+    "contact_number_1": {
       "type": "string"
     },
     "contact_us_link": {
@@ -32,7 +32,7 @@
     "copyright_text": {
       "type": "string"
     },
-    "website_logo": {
+    "footer_logo": {
       "type": "media",
       "multiple": false,
       "required": true,
@@ -44,6 +44,32 @@
       "type": "text"
     },
     "footer_contact_text": {
+      "type": "string"
+    },
+    "header_logo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "contact_us_button_text": {
+      "type": "string"
+    },
+    "contact_us_button_link": {
+      "type": "string"
+    },
+    "contact_number_2": {
+      "type": "string"
+    },
+    "useful_lniks_heading": {
+      "type": "string"
+    },
+    "services_heading": {
+      "type": "string"
+    },
+    "address_heading": {
       "type": "string"
     }
   }

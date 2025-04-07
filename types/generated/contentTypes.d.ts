@@ -474,7 +474,8 @@ export interface ApiBossinessPartnerBossinessPartner
   extends Struct.CollectionTypeSchema {
   collectionName: 'bossiness_partners';
   info: {
-    displayName: 'Bossiness Partner';
+    description: '';
+    displayName: 'Business Partner';
     pluralName: 'bossiness-partners';
     singularName: 'bossiness-partner';
   };
@@ -667,7 +668,7 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
 }
 
 export interface ApiHomePageSettingHomePageSetting
-  extends Struct.CollectionTypeSchema {
+  extends Struct.SingleTypeSchema {
   collectionName: 'home_page_settings';
   info: {
     description: '';
@@ -776,7 +777,7 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
 }
 
 export interface ApiWebsiteSettingWebsiteSetting
-  extends Struct.CollectionTypeSchema {
+  extends Struct.SingleTypeSchema {
   collectionName: 'website_settings';
   info: {
     description: '';
@@ -788,7 +789,11 @@ export interface ApiWebsiteSettingWebsiteSetting
     draftAndPublish: true;
   };
   attributes: {
-    contact_number: Schema.Attribute.String;
+    address_heading: Schema.Attribute.String;
+    contact_number_1: Schema.Attribute.String;
+    contact_number_2: Schema.Attribute.String;
+    contact_us_button_link: Schema.Attribute.String;
+    contact_us_button_text: Schema.Attribute.String;
     contact_us_link: Schema.Attribute.String;
     copyright_text: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
@@ -796,7 +801,9 @@ export interface ApiWebsiteSettingWebsiteSetting
       Schema.Attribute.Private;
     facebook_link: Schema.Attribute.String;
     footer_contact_text: Schema.Attribute.String;
+    footer_logo: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     footer_text: Schema.Attribute.Text;
+    header_logo: Schema.Attribute.Media<'images'>;
     linkedIn_link: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -805,12 +812,13 @@ export interface ApiWebsiteSettingWebsiteSetting
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    services_heading: Schema.Attribute.String;
     support_email: Schema.Attribute.String;
     twiter_link: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    website_logo: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    useful_lniks_heading: Schema.Attribute.String;
   };
 }
 
