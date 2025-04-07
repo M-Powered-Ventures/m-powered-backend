@@ -31,6 +31,20 @@
     },
     "copyright_text": {
       "type": "string"
+    },
+    "website_logo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "footer_text": {
+      "type": "text"
+    },
+    "footer_contact_text": {
+      "type": "string"
     }
   }
 }

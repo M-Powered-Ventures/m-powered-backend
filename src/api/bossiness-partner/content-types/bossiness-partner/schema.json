@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "bossiness_partners",
+  "info": {
+    "singularName": "bossiness-partner",
+    "pluralName": "bossiness-partners",
+    "displayName": "Bossiness Partner"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

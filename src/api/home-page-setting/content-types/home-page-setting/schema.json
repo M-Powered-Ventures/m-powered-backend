@@ -4,7 +4,8 @@
   "info": {
     "singularName": "home-page-setting",
     "pluralName": "home-page-settings",
-    "displayName": "Home Page Setting"
+    "displayName": "Home Page Setting",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -41,25 +42,26 @@
       "type": "string"
     },
     "banner_image": {
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "type": "media",
-      "multiple": false
-    },
-    "section_image": {
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
       "type": "media",
       "multiple": false,
-      "required": true
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "section_image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     },
     "we_do_not_just_invest_heading_text": {
       "type": "string"
@@ -97,15 +99,15 @@
       "type": "text"
     },
     "what_makes_us_different_image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false,
-      "required": true
+      ]
     },
     "what_our_client_says_heading_text": {
       "type": "string"
@@ -118,6 +120,26 @@
     },
     "how_it_works_description_text": {
       "type": "text"
+    },
+    "make_us_diffrent_image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "build_something_content": {
+      "type": "blocks"
+    },
+    "tech_team_content": {
+      "type": "blocks"
+    },
+    "startup_scale_content": {
+      "type": "blocks"
+    },
+    "guide_tech_content": {
+      "type": "blocks"
     }
   }
 }

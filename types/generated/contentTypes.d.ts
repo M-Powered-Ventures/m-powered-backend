@@ -470,6 +470,35 @@ export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiBossinessPartnerBossinessPartner
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'bossiness_partners';
+  info: {
+    displayName: 'Bossiness Partner';
+    pluralName: 'bossiness-partners';
+    singularName: 'bossiness-partner';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    image: Schema.Attribute.Media<'images'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::bossiness-partner.bossiness-partner'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiCaseStudyCaseStudy extends Struct.CollectionTypeSchema {
   collectionName: 'case_studies';
   info: {
@@ -641,6 +670,7 @@ export interface ApiHomePageSettingHomePageSetting
   extends Struct.CollectionTypeSchema {
   collectionName: 'home_page_settings';
   info: {
+    description: '';
     displayName: 'Home Page Setting';
     pluralName: 'home-page-settings';
     singularName: 'home-page-setting';
@@ -653,6 +683,7 @@ export interface ApiHomePageSettingHomePageSetting
       'images' | 'files' | 'videos' | 'audios'
     >;
     banner_text: Schema.Attribute.Text & Schema.Attribute.Required;
+    build_something_content: Schema.Attribute.Blocks;
     businesses_description_text: Schema.Attribute.Text;
     businesses_heading_text: Schema.Attribute.String;
     concept_to_mvp_decription_text: Schema.Attribute.Text &
@@ -666,6 +697,7 @@ export interface ApiHomePageSettingHomePageSetting
       Schema.Attribute.Required;
     focus_on_growth_heading_text: Schema.Attribute.String &
       Schema.Attribute.Required;
+    guide_tech_content: Schema.Attribute.Blocks;
     how_it_works_description_text: Schema.Attribute.Text;
     how_it_works_heading_text: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -674,6 +706,7 @@ export interface ApiHomePageSettingHomePageSetting
       'api::home-page-setting.home-page-setting'
     > &
       Schema.Attribute.Private;
+    make_us_diffrent_image: Schema.Attribute.Media<'images'>;
     our_services_description_text: Schema.Attribute.Text;
     our_services_heading_text: Schema.Attribute.String &
       Schema.Attribute.Required;
@@ -687,8 +720,10 @@ export interface ApiHomePageSettingHomePageSetting
       'images' | 'files' | 'videos' | 'audios'
     > &
       Schema.Attribute.Required;
+    startup_scale_content: Schema.Attribute.Blocks;
     startups_description_text: Schema.Attribute.Text;
     startups_heading_text: Schema.Attribute.String & Schema.Attribute.Required;
+    tech_team_content: Schema.Attribute.Blocks;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -760,6 +795,8 @@ export interface ApiWebsiteSettingWebsiteSetting
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     facebook_link: Schema.Attribute.String;
+    footer_contact_text: Schema.Attribute.String;
+    footer_text: Schema.Attribute.Text;
     linkedIn_link: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -773,6 +810,7 @@ export interface ApiWebsiteSettingWebsiteSetting
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    website_logo: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
   };
 }
 
@@ -1288,6 +1326,7 @@ declare module '@strapi/strapi' {
       'api::about.about': ApiAboutAbout;
       'api::article.article': ApiArticleArticle;
       'api::author.author': ApiAuthorAuthor;
+      'api::bossiness-partner.bossiness-partner': ApiBossinessPartnerBossinessPartner;
       'api::case-study.case-study': ApiCaseStudyCaseStudy;
       'api::category.category': ApiCategoryCategory;
       'api::client-review.client-review': ApiClientReviewClientReview;
