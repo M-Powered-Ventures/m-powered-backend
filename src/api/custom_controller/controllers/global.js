@@ -1,12 +1,31 @@
 module.exports = {
   async getCombinedData(ctx) {
+    console.log("Fetching combined data...", ctx);
+
+    let originalUrl = ctx.request.url;
+
+    let slug = originalUrl.split("?").pop();
+    console.log("Slug:", slug);
+
     try {
-      const contentTypes = Object.keys(strapi.contentTypes).filter((type) =>
+      let contentTypes = Object.keys(strapi.contentTypes).filter((type) =>
         type.startsWith("api::")
       );
+
+      if (slug && slug !== "home") {
+        contentTypes.push(
+          "api::project.project",
+          "api::website-setting.website-setting"
+        );
+      }
+
       const data = {};
       for (const type of contentTypes) {
+        console.log("Type:", type);
+
         const collectionName = type.split("::")[1].split(".")[0];
+        console.log("Collection Name:", collectionName);
+
         try {
           // populate the data for each collection
 
