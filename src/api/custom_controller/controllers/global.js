@@ -5,7 +5,6 @@ module.exports = {
     let originalUrl = ctx.request.url;
 
     let slug = originalUrl.split("?").pop();
-    console.log("Slug:", slug);
 
     try {
       let contentTypes = Object.keys(strapi.contentTypes).filter((type) =>
