@@ -146,6 +146,15 @@
     },
     "case_studies_description": {
       "type": "text"
+    },
+    "header_content_color_1": {
+      "type": "string"
+    },
+    "header_content_color_2": {
+      "type": "string"
+    },
+    "middle_section_content_color": {
+      "type": "string"
     }
   }
 }
