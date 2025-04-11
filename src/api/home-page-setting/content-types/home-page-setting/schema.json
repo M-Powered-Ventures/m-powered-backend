@@ -155,6 +155,15 @@
     },
     "middle_section_content_color": {
       "type": "string"
+    },
+    "header_content_border_color_1": {
+      "type": "string"
+    },
+    "header_content_border_color_2": {
+      "type": "string"
+    },
+    "middle_section_border_color": {
+      "type": "string"
     }
   }
 }

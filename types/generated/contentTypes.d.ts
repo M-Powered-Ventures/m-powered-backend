@@ -700,6 +700,8 @@ export interface ApiHomePageSettingHomePageSetting
     focus_on_growth_heading_text: Schema.Attribute.String &
       Schema.Attribute.Required;
     guide_tech_content: Schema.Attribute.Blocks;
+    header_content_border_color_1: Schema.Attribute.String;
+    header_content_border_color_2: Schema.Attribute.String;
     header_content_color_1: Schema.Attribute.String;
     header_content_color_2: Schema.Attribute.String;
     how_it_works_description_text: Schema.Attribute.Text;
@@ -711,6 +713,7 @@ export interface ApiHomePageSettingHomePageSetting
     > &
       Schema.Attribute.Private;
     make_us_diffrent_image: Schema.Attribute.Media<'images'>;
+    middle_section_border_color: Schema.Attribute.String;
     middle_section_content_color: Schema.Attribute.String;
     our_case_studies_heading: Schema.Attribute.String;
     our_services_description_text: Schema.Attribute.Text;
