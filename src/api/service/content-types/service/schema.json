@@ -4,7 +4,8 @@
   "info": {
     "singularName": "service",
     "pluralName": "services",
-    "displayName": "Service"
+    "displayName": "Service",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -22,20 +23,26 @@
       "type": "text"
     },
     "icon": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false,
-      "required": true
+      ]
     },
     "order": {
       "type": "integer",
       "required": true,
       "unique": true
+    },
+    "key_benifits": {
+      "type": "text"
+    },
+    "technologies": {
+      "type": "text"
     }
   }
 }

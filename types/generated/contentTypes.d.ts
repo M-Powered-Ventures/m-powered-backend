@@ -784,6 +784,7 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
 export interface ApiServiceService extends Struct.CollectionTypeSchema {
   collectionName: 'services';
   info: {
+    description: '';
     displayName: 'Service';
     pluralName: 'services';
     singularName: 'service';
@@ -798,6 +799,7 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
     detailed_description: Schema.Attribute.Text;
     icon: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
       Schema.Attribute.Required;
+    key_benifits: Schema.Attribute.Text;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -809,6 +811,7 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
       Schema.Attribute.Unique;
     publishedAt: Schema.Attribute.DateTime;
     short_description: Schema.Attribute.Text & Schema.Attribute.Required;
+    technologies: Schema.Attribute.Text;
     title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
