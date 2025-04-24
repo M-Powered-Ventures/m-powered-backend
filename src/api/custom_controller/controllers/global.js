@@ -28,8 +28,20 @@ module.exports = {
         try {
           // populate the data for each collection
 
+          let filters = {};
+
+          if (collectionName == "insight") {
+            filters = {
+              is_show_on_home: {
+                $eq: true,
+              },
+            };
+          }
+
+          console.log("Filters:", filters);
           data[collectionName] = await strapi.entityService.findMany(type, {
-            populate: "*", // specify the fields to populate
+            filters,
+            populate: "*",
           });
 
           // replace - in the name with _ in the  collection name

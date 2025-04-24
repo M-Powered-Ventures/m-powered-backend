@@ -749,6 +749,42 @@ export interface ApiHomePageSettingHomePageSetting
   };
 }
 
+export interface ApiInsightInsight extends Struct.CollectionTypeSchema {
+  collectionName: 'insights';
+  info: {
+    displayName: 'Insight';
+    pluralName: 'insights';
+    singularName: 'insight';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    author_image: Schema.Attribute.Media<'images'>;
+    author_name: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    date: Schema.Attribute.String;
+    detailed_description: Schema.Attribute.Text;
+    image: Schema.Attribute.Media<'images'>;
+    is_show_on_home: Schema.Attribute.Boolean;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::insight.insight'
+    > &
+      Schema.Attribute.Private;
+    order: Schema.Attribute.Integer;
+    publishedAt: Schema.Attribute.DateTime;
+    short_description: Schema.Attribute.Text;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiProjectProject extends Struct.CollectionTypeSchema {
   collectionName: 'projects';
   info: {
@@ -1387,6 +1423,7 @@ declare module '@strapi/strapi' {
       'api::faq.faq': ApiFaqFaq;
       'api::global.global': ApiGlobalGlobal;
       'api::home-page-setting.home-page-setting': ApiHomePageSettingHomePageSetting;
+      'api::insight.insight': ApiInsightInsight;
       'api::project.project': ApiProjectProject;
       'api::service.service': ApiServiceService;
       'api::website-setting.website-setting': ApiWebsiteSettingWebsiteSetting;
