@@ -861,6 +861,7 @@ export interface ApiSuccessStorySuccessStory
   extends Struct.CollectionTypeSchema {
   collectionName: 'success_stories';
   info: {
+    description: '';
     displayName: 'Success Story';
     pluralName: 'success-stories';
     singularName: 'success-story';
@@ -871,10 +872,14 @@ export interface ApiSuccessStorySuccessStory
   attributes: {
     button_link: Schema.Attribute.String;
     button_text: Schema.Attribute.String;
+    challenge_description: Schema.Attribute.Text;
+    challenge_heading: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Text;
+    founder_quote: Schema.Attribute.Text;
+    founder_quote_heading: Schema.Attribute.String;
     image: Schema.Attribute.Media<'images'>;
     is_show_on_home: Schema.Attribute.Boolean &
       Schema.Attribute.DefaultTo<true>;
@@ -885,6 +890,10 @@ export interface ApiSuccessStorySuccessStory
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    results_description: Schema.Attribute.Text;
+    results_heading: Schema.Attribute.String;
+    solution_description: Schema.Attribute.Text;
+    solution_heading: Schema.Attribute.String;
     startup_name: Schema.Attribute.String;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;

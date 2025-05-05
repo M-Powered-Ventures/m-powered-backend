@@ -4,7 +4,8 @@
   "info": {
     "singularName": "success-story",
     "pluralName": "success-stories",
-    "displayName": "Success Story"
+    "displayName": "Success Story",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -30,11 +31,36 @@
       "default": true
     },
     "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "challenge_description": {
+      "type": "text"
+    },
+    "solution_description": {
+      "type": "text"
+    },
+    "results_description": {
+      "type": "text"
+    },
+    "founder_quote": {
+      "type": "text"
+    },
+    "challenge_heading": {
+      "type": "string"
+    },
+    "solution_heading": {
+      "type": "string"
+    },
+    "results_heading": {
+      "type": "string"
+    },
+    "founder_quote_heading": {
+      "type": "string"
     }
   }
 }
