@@ -164,6 +164,12 @@
     },
     "middle_section_border_color": {
       "type": "string"
+    },
+    "success_stories_heading": {
+      "type": "string"
+    },
+    "success_stories_description": {
+      "type": "text"
     }
   }
 }

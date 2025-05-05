@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "success_stories",
+  "info": {
+    "singularName": "success-story",
+    "pluralName": "success-stories",
+    "displayName": "Success Story"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "startup_name": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "button_text": {
+      "type": "string"
+    },
+    "button_link": {
+      "type": "string"
+    },
+    "is_show_on_home": {
+      "type": "boolean",
+      "default": true
+    },
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

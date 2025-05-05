@@ -732,6 +732,8 @@ export interface ApiHomePageSettingHomePageSetting
     startup_scale_content: Schema.Attribute.Blocks;
     startups_description_text: Schema.Attribute.Text;
     startups_heading_text: Schema.Attribute.String & Schema.Attribute.Required;
+    success_stories_description: Schema.Attribute.Text;
+    success_stories_heading: Schema.Attribute.String;
     tech_team_content: Schema.Attribute.Blocks;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -849,6 +851,42 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
     short_description: Schema.Attribute.Text & Schema.Attribute.Required;
     technologies: Schema.Attribute.Text;
     title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSuccessStorySuccessStory
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'success_stories';
+  info: {
+    displayName: 'Success Story';
+    pluralName: 'success-stories';
+    singularName: 'success-story';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    button_link: Schema.Attribute.String;
+    button_text: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    image: Schema.Attribute.Media<'images'>;
+    is_show_on_home: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<true>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::success-story.success-story'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    startup_name: Schema.Attribute.String;
+    title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1426,6 +1464,7 @@ declare module '@strapi/strapi' {
       'api::insight.insight': ApiInsightInsight;
       'api::project.project': ApiProjectProject;
       'api::service.service': ApiServiceService;
+      'api::success-story.success-story': ApiSuccessStorySuccessStory;
       'api::website-setting.website-setting': ApiWebsiteSettingWebsiteSetting;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
