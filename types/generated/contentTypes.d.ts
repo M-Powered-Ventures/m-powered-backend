@@ -1076,7 +1076,15 @@ export interface ApiWebsiteSettingWebsiteSetting
     footer_contact_text: Schema.Attribute.String;
     footer_logo: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     footer_text: Schema.Attribute.Text;
+    github_link: Schema.Attribute.String;
+    github_logo: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
     header_logo: Schema.Attribute.Media<'images'>;
+    instagram_link: Schema.Attribute.String;
+    instagram_logo: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
     linkdin_logo: Schema.Attribute.Media<'images'>;
     linkedIn_link: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -1088,6 +1096,10 @@ export interface ApiWebsiteSettingWebsiteSetting
     publishedAt: Schema.Attribute.DateTime;
     services_heading: Schema.Attribute.String;
     support_email: Schema.Attribute.String;
+    tiktok_link: Schema.Attribute.String;
+    tiktok_logo: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
     twiter_link: Schema.Attribute.String;
     twiter_logo: Schema.Attribute.Media<'images'>;
     updatedAt: Schema.Attribute.DateTime;
