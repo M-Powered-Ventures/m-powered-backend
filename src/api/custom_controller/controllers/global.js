@@ -3,9 +3,7 @@ module.exports = {
     console.log("Fetching combined data...", ctx);
 
     let originalUrl = ctx.request.url;
-
-    let slug = originalUrl.split("?").pop();
-
+    var slug = originalUrl.split("?").pop();
     try {
       let contentTypes = Object.keys(strapi.contentTypes).filter((type) =>
         type.startsWith("api::")
@@ -18,25 +16,28 @@ module.exports = {
         );
       }
 
-      const data = {};
+      let data = {};
       for (const type of contentTypes) {
-        console.log("Type:", type);
-
         const collectionName = type.split("::")[1].split(".")[0];
-        console.log("Collection Name:", collectionName);
 
         try {
           // populate the data for each collection
 
           let filters = {};
 
-          if (collectionName == "insight") {
-            filters = {
-              is_show_on_home: {
-                $eq: true,
-              },
-            };
-          }
+          // if (collectionName == "insight" && slug == "home") {
+          //   filters = {
+          //     is_show_on_home: {
+          //       $eq: true,
+          //     },
+          //   };
+          // } else {
+          //   filters = {
+          //     is_show_on_home: {
+          //       $eq: false,
+          //     },
+          //   };
+          // }
 
           console.log("Filters:", filters);
           data[collectionName] = await strapi.entityService.findMany(type, {
@@ -58,6 +59,17 @@ module.exports = {
         if (collectionName.includes("-")) {
           delete data[collectionName];
         }
+      }
+
+      // if slug is home then i=in insight filter only is_show_on_home = true else false
+
+      if (slug == "slug=home") {
+        console.log("Filtering insights for home page...");
+        data = {
+          ...data,
+          insight: data.insight.filter((item) => item.is_show_on_home),
+          faq: data.faq.filter((item) => item.use_for === "home"),
+        };
       }
 
       ctx.body = data;
