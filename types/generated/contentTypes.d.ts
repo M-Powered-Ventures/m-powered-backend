@@ -1005,6 +1005,7 @@ export interface ApiSuccessStorySuccessStory
 export interface ApiTeamTeam extends Struct.CollectionTypeSchema {
   collectionName: 'teams';
   info: {
+    description: '';
     displayName: 'Team';
     pluralName: 'teams';
     singularName: 'team';
@@ -1036,7 +1037,9 @@ export interface ApiTeamTeam extends Struct.CollectionTypeSchema {
       'images' | 'files' | 'videos' | 'audios'
     >;
     social_url: Schema.Attribute.String;
-    tags: Schema.Attribute.RichText;
+    tag_1: Schema.Attribute.String;
+    tag_2: Schema.Attribute.String;
+    tag_3: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
