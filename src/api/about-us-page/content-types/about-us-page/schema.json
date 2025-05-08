@@ -1,0 +1,45 @@
+{
+  "kind": "singleType",
+  "collectionName": "about_us_pages",
+  "info": {
+    "singularName": "about-us-page",
+    "pluralName": "about-us-pages",
+    "displayName": "About Us Page",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "banner_heading": {
+      "type": "string",
+      "required": true
+    },
+    "banner_description": {
+      "type": "text"
+    },
+    "our_approach_heading": {
+      "type": "string",
+      "required": true
+    },
+    "our_approach_description": {
+      "type": "text",
+      "required": true
+    },
+    "dual_investment_models_heading": {
+      "type": "string"
+    },
+    "our_mission_heading": {
+      "type": "string"
+    },
+    "our_mission_description": {
+      "type": "text"
+    },
+    "our_team_heading": {
+      "type": "string"
+    },
+    "the_m_powered_advantage_heading": {
+      "type": "string"
+    }
+  }
+}

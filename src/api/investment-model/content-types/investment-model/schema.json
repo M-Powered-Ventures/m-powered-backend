@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "investment_models",
+  "info": {
+    "singularName": "investment-model",
+    "pluralName": "investment-models",
+    "displayName": "Investment Model"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
