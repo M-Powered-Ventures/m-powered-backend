@@ -28,7 +28,7 @@
     },
     "use_for": {
       "type": "string",
-      "default": "general"
+      "default": "home"
     }
   }
 }
