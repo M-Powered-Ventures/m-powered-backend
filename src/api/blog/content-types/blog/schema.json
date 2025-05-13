@@ -44,6 +44,9 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::author.author"
+    },
+    "read_mints": {
+      "type": "string"
     }
   }
 }
