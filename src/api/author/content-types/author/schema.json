@@ -19,7 +19,11 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images", "files", "videos"]
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ]
     },
     "email": {
       "type": "string"
@@ -29,6 +33,54 @@
       "relation": "oneToMany",
       "target": "api::article.article",
       "mappedBy": "author"
+    },
+    "designation": {
+      "type": "string"
+    },
+    "biography": {
+      "type": "text"
+    },
+    "twitter_icon": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "twitter_link": {
+      "type": "string"
+    },
+    "linkedIn_icon": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "linkedIn_url": {
+      "type": "string"
+    },
+    "mail_icon": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "mail_url": {
+      "type": "string"
+    },
+    "created_for": {
+      "type": "string"
     }
   }
 }
