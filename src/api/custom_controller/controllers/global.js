@@ -1,7 +1,6 @@
 module.exports = {
   async getCombinedData(ctx) {
     console.log("Fetching combined data...", ctx);
-
     let originalUrl = ctx.request.url;
     var slug = originalUrl.split("?").pop();
     try {
@@ -19,12 +18,19 @@ module.exports = {
       let data = {};
       for (const type of contentTypes) {
         const collectionName = type.split("::")[1].split(".")[0];
-
         try {
-          // populate the data for each collection
-
           let filters = {};
-
+          let populate = "*";
+          console.log("Collection Name:", collectionName);
+          if (collectionName === "blog") {
+            populate = {
+              author: {
+                populate: "*", // populate all fields of author
+              },
+              blog_category: true, // add other relations if needed
+              image: true,
+            };
+          }
           // if (collectionName == "insight" && slug == "home") {
           //   filters = {
           //     is_show_on_home: {
@@ -42,7 +48,7 @@ module.exports = {
           console.log("Filters:", filters);
           data[collectionName] = await strapi.entityService.findMany(type, {
             filters,
-            populate: "*",
+            populate,
           });
 
           // replace - in the name with _ in the  collection name
@@ -73,6 +79,25 @@ module.exports = {
       }
 
       ctx.body = data;
+    } catch (error) {
+      console.error("Main Error:", error);
+      ctx.body = { error: "Something went wrong", details: error };
+      ctx.status = 500;
+    }
+  },
+  async getDetailBlog(ctx) {
+    const { _id } = ctx.params;
+    try {
+      const blog = await strapi.entityService.findOne("api::blog.blog", _id, {
+        populate: {
+          author: {
+            populate: "*",
+          },
+          blog_category: true,
+          image: true,
+        },
+      });
+      ctx.body = blog;
     } catch (error) {
       console.error("Main Error:", error);
       ctx.body = { error: "Something went wrong", details: error };

@@ -7,8 +7,14 @@ module.exports = {
       config: {
         auth: false,
       },
-
-      // Define the parameters for the endpoint
+    },
+    {
+      method: "GET",
+      path: "/detail_blog/:_id",
+      handler: "global.getDetailBlog",
+      config: {
+        auth: false,
+      },
     },
   ],
 };
