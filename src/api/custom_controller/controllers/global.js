@@ -30,7 +30,7 @@ module.exports = {
               blog_category: true, // add other relations if needed
               image: true,
             };
-          } else if (collectionName === "success_story") {
+          } else if (collectionName === "success-story") {
             populate = {
               author: {
                 populate: "*",
