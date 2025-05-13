@@ -84,9 +84,6 @@
     },
     "created_for": {
       "type": "string"
-    },
-    "read_mints": {
-      "type": "string"
     }
   }
 }

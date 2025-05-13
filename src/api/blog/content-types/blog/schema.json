@@ -47,6 +47,9 @@
     },
     "read_mints": {
       "type": "string"
+    },
+    "detailed_description": {
+      "type": "richtext"
     }
   }
 }

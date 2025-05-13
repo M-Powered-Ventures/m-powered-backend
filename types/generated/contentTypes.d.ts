@@ -542,7 +542,6 @@ export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
     mail_url: Schema.Attribute.String;
     name: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
-    read_mints: Schema.Attribute.String;
     twitter_icon: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >;
@@ -606,6 +605,7 @@ export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     detail_description: Schema.Attribute.Blocks;
+    detailed_description: Schema.Attribute.RichText;
     image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::blog.blog'> &
