@@ -41,45 +41,51 @@
       "type": "text"
     },
     "twitter_icon": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "twitter_link": {
       "type": "string"
     },
     "linkedIn_icon": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "linkedIn_url": {
       "type": "string"
     },
     "mail_icon": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "mail_url": {
       "type": "string"
     },
     "created_for": {
+      "type": "string"
+    },
+    "read_mints": {
       "type": "string"
     }
   }

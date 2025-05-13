@@ -542,6 +542,7 @@ export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
     mail_url: Schema.Attribute.String;
     name: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    read_mints: Schema.Attribute.String;
     twitter_icon: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >;
