@@ -30,6 +30,15 @@ module.exports = {
               blog_category: true, // add other relations if needed
               image: true,
             };
+          } else if (collectionName === "success_story") {
+            populate = {
+              author: {
+                populate: "*",
+              },
+              createdBy: true,
+              image: true,
+              updatedBy: true,
+            };
           }
           // if (collectionName == "insight" && slug == "home") {
           //   filters = {
