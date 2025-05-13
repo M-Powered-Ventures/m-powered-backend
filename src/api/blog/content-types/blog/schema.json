@@ -37,7 +37,7 @@
       "relation": "oneToOne",
       "target": "api::blog-category.blog-category"
     },
-    "detailed_description": {
+    "detail_description": {
       "type": "blocks"
     },
     "author": {
