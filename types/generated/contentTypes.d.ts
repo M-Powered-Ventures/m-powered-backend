@@ -1054,14 +1054,17 @@ export interface ApiSuccessStorySuccessStory
     draftAndPublish: true;
   };
   attributes: {
+    author: Schema.Attribute.Relation<'oneToOne', 'api::author.author'>;
     button_link: Schema.Attribute.String;
     button_text: Schema.Attribute.String;
+    category_type: Schema.Attribute.String;
     challenge_description: Schema.Attribute.Text;
     challenge_heading: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Text;
+    detailed_description: Schema.Attribute.RichText;
     founder_quote: Schema.Attribute.Text;
     founder_quote_heading: Schema.Attribute.String;
     image: Schema.Attribute.Media<'images'>;

@@ -61,6 +61,17 @@
     },
     "founder_quote_heading": {
       "type": "string"
+    },
+    "author": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::author.author"
+    },
+    "category_type": {
+      "type": "string"
+    },
+    "detailed_description": {
+      "type": "richtext"
     }
   }
 }
