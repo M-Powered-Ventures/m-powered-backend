@@ -104,54 +104,59 @@ module.exports = {
     }
     let skip = (page - 1) * limit;
     try {
-      let [blogs, total, other_blogs, latest_blogs] = await Promise.all([
-        strapi.entityService.findMany("api::insight.insight", {
-          filters: {
-            blog_category: {
-              id: category,
-            },
-          },
-          populate: {
-            author: {
-              populate: "*",
-            },
-            blog_category: true,
-            image: true,
-          },
-          start: Number(skip),
-          limit: Number(limit),
-        }),
-        strapi.entityService.count("api::insight.insight", {
-          filters: {
-            blog_category: {
-              id: category,
-            },
-          },
-        }),
-        strapi.entityService.findMany("api::insight.insight", {
-          filters: {
-            blog_category: {
-              id: {
-                $ne: category,
+      let [blogs, total, other_blogs, latest_blogs, blog_categorys] =
+        await Promise.all([
+          strapi.entityService.findMany("api::insight.insight", {
+            filters: {
+              blog_category: {
+                id: category,
               },
             },
-          },
-          populate: {
-            author: { populate: "*" },
-            blog_category: true,
-            image: true,
-          },
-        }),
-        strapi.entityService.findMany("api::insight.insight", {
-          sort: { createdAt: "desc" },
-          limit: 3,
-          populate: {
-            author: { populate: "*" },
-            blog_category: true,
-            image: true,
-          },
-        }),
-      ]);
+            populate: {
+              author: {
+                populate: "*",
+              },
+              blog_category: true,
+              image: true,
+            },
+            start: Number(skip),
+            limit: Number(limit),
+          }),
+          strapi.entityService.count("api::insight.insight", {
+            filters: {
+              blog_category: {
+                id: category,
+              },
+            },
+          }),
+          strapi.entityService.findMany("api::insight.insight", {
+            filters: {
+              blog_category: {
+                id: {
+                  $ne: category,
+                },
+              },
+            },
+            populate: {
+              author: { populate: "*" },
+              blog_category: true,
+              image: true,
+            },
+          }),
+          strapi.entityService.findMany("api::insight.insight", {
+            sort: { createdAt: "desc" },
+            limit: 3,
+            populate: {
+              author: { populate: "*" },
+              blog_category: true,
+              image: true,
+            },
+          }),
+          strapi.entityService.findMany("api::blog-category.blog-category", {
+            sort: { createdAt: "desc" },
+            populate: "*",
+          }),
+        ]);
       let loadMoreUrl = `api/fetch_category_insights/${category}?page=${page}&limit=${limit}`;
       let total_pages = Math.ceil(total / limit);
       if (page >= total_pages) {
@@ -164,6 +169,7 @@ module.exports = {
         loadMoreUrl,
         other_blogs,
         latest_blogs,
+        blog_categorys,
       };
     } catch (error) {
       console.error("Error fetching blogs by category:", error);
