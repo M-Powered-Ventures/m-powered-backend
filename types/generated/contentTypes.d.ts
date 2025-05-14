@@ -907,6 +907,7 @@ export interface ApiHomePageSettingHomePageSetting
 export interface ApiInsightInsight extends Struct.CollectionTypeSchema {
   collectionName: 'insights';
   info: {
+    description: '';
     displayName: 'Insight';
     pluralName: 'insights';
     singularName: 'insight';
@@ -915,13 +916,18 @@ export interface ApiInsightInsight extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    author: Schema.Attribute.Relation<'oneToOne', 'api::author.author'>;
     author_image: Schema.Attribute.Media<'images'>;
     author_name: Schema.Attribute.String;
+    blog_category: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::blog-category.blog-category'
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     date: Schema.Attribute.String;
-    detailed_description: Schema.Attribute.Text;
+    detailed_description: Schema.Attribute.RichText;
     image: Schema.Attribute.Media<'images'>;
     is_show_on_home: Schema.Attribute.Boolean;
     locale: Schema.Attribute.String & Schema.Attribute.Private;

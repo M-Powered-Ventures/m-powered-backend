@@ -4,7 +4,8 @@
   "info": {
     "singularName": "insight",
     "pluralName": "insights",
-    "displayName": "Insight"
+    "displayName": "Insight",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -14,9 +15,6 @@
       "type": "string"
     },
     "short_description": {
-      "type": "text"
-    },
-    "detailed_description": {
       "type": "text"
     },
     "order": {
@@ -32,18 +30,33 @@
       "type": "string"
     },
     "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "author_image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "author": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::author.author"
+    },
+    "detailed_description": {
+      "type": "richtext"
+    },
+    "blog_category": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::blog-category.blog-category"
     }
   }
 }

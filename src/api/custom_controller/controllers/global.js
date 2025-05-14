@@ -7,7 +7,6 @@ module.exports = {
       let contentTypes = Object.keys(strapi.contentTypes).filter((type) =>
         type.startsWith("api::")
       );
-
       if (slug && slug !== "home") {
         contentTypes.push(
           "api::project.project",
@@ -40,44 +39,21 @@ module.exports = {
               updatedBy: true,
             };
           }
-          // if (collectionName == "insight" && slug == "home") {
-          //   filters = {
-          //     is_show_on_home: {
-          //       $eq: true,
-          //     },
-          //   };
-          // } else {
-          //   filters = {
-          //     is_show_on_home: {
-          //       $eq: false,
-          //     },
-          //   };
-          // }
-
-          console.log("Filters:", filters);
           data[collectionName] = await strapi.entityService.findMany(type, {
             filters,
             populate,
           });
-
-          // replace - in the name with _ in the  collection name
           const formattedCollectionName = collectionName.replace(/-/g, "_");
-          // replace - in the name with _ in the  collection name
           data[formattedCollectionName] = data[collectionName];
         } catch (fetchError) {
           data[collectionName] = { error: `Failed to fetch ${collectionName}` };
         }
       }
-
-      // delete the original collection with - in the name
       for (const collectionName of Object.keys(data)) {
         if (collectionName.includes("-")) {
           delete data[collectionName];
         }
       }
-
-      // if slug is home then i=in insight filter only is_show_on_home = true else false
-
       if (slug == "slug=home") {
         console.log("Filtering insights for home page...");
         data = {
