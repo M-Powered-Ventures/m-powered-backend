@@ -1,6 +1,5 @@
 module.exports = {
   async getCombinedData(ctx) {
-    console.log("Fetching combined data...", ctx);
     let originalUrl = ctx.request.url;
     var slug = originalUrl.split("?").pop();
     try {
@@ -21,7 +20,7 @@ module.exports = {
           let filters = {};
           let populate = "*";
           console.log("Collection Name:", collectionName);
-          if (collectionName === "blog") {
+          if (collectionName === "blog" || collectionName === "insight") {
             populate = {
               author: {
                 populate: "*", // populate all fields of author
