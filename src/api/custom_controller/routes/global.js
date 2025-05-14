@@ -16,5 +16,13 @@ module.exports = {
         auth: false,
       },
     },
+    {
+      method: "GET",
+      path: "/fetch_category_insights/:category_id",
+      handler: "global.getBlogsByCategory",
+      config: {
+        auth: false,
+      },
+    },
   ],
 };

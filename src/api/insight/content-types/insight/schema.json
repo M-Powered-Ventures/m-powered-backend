@@ -57,6 +57,12 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::blog-category.blog-category"
+    },
+    "read_mints": {
+      "type": "string"
+    },
+    "tag": {
+      "type": "string"
     }
   }
 }

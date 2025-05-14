@@ -12,7 +12,6 @@ module.exports = {
           "api::website-setting.website-setting"
         );
       }
-
       let data = {};
       for (const type of contentTypes) {
         const collectionName = type.split("::")[1].split(".")[0];
@@ -84,6 +83,90 @@ module.exports = {
       ctx.body = blog;
     } catch (error) {
       console.error("Main Error:", error);
+      ctx.body = { error: "Something went wrong", details: error };
+      ctx.status = 500;
+    }
+  },
+  async getBlogsByCategory(ctx) {
+    let page = ctx.query.page;
+    let limit = parseInt(ctx.query.limit);
+    let category = ctx.params.category_id;
+    if (!ctx.query.page) {
+      limit = 5;
+    }
+    if (page) {
+      page = parseInt(page) + 1;
+      if (isNaN(page)) {
+        page = 1;
+      }
+    } else {
+      page = 1;
+    }
+    let skip = (page - 1) * limit;
+    try {
+      let [blogs, total, other_blogs, latest_blogs] = await Promise.all([
+        strapi.entityService.findMany("api::insight.insight", {
+          filters: {
+            blog_category: {
+              id: category,
+            },
+          },
+          populate: {
+            author: {
+              populate: "*",
+            },
+            blog_category: true,
+            image: true,
+          },
+          start: Number(skip),
+          limit: Number(limit),
+        }),
+        strapi.entityService.count("api::insight.insight", {
+          filters: {
+            blog_category: {
+              id: category,
+            },
+          },
+        }),
+        strapi.entityService.findMany("api::insight.insight", {
+          filters: {
+            blog_category: {
+              id: {
+                $ne: category,
+              },
+            },
+          },
+          populate: {
+            author: { populate: "*" },
+            blog_category: true,
+            image: true,
+          },
+        }),
+        strapi.entityService.findMany("api::insight.insight", {
+          sort: { createdAt: "desc" },
+          limit: 3,
+          populate: {
+            author: { populate: "*" },
+            blog_category: true,
+            image: true,
+          },
+        }),
+      ]);
+      let loadMoreUrl = `api/fetch_category_insights/${category}?page=${page}&limit=${limit}`;
+      let total_pages = Math.ceil(total / limit);
+      if (page >= total_pages) {
+        loadMoreUrl = "";
+      }
+      ctx.body = {
+        blogs,
+        total,
+        total_pages,
+        loadMoreUrl,
+        other_blogs,
+        latest_blogs,
+      };
+    } catch (error) {
+      console.error("Error fetching blogs by category:", error);
       ctx.body = { error: "Something went wrong", details: error };
       ctx.status = 500;
     }
