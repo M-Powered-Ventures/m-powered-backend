@@ -70,26 +70,40 @@ module.exports = {
   },
   async getDetailBlog(ctx) {
     const { _id } = ctx.params;
+    let type = ctx.query.type ?? "insight";
+    let contentTypes = "api::insight.insight";
+    let populate = {
+      author: {
+        populate: "*",
+      },
+      image: true,
+    };
+    if (type === "insight") {
+      contentTypes = "api::insight.insight";
+      populate = { ...populate, blog_category: true };
+    } else if (type === "success_story") {
+      contentTypes = "api::success-story.success-story";
+    }
     try {
-      const blog = await strapi.entityService.findOne(
-        "api::insight.insight",
-        _id,
-        {
-          populate: {
-            author: {
-              populate: "*",
-            },
-            blog_category: true,
-            image: true,
-          },
-        }
-      );
+      const blog = await strapi.entityService.findOne(contentTypes, _id, {
+        populate,
+      });
       if (!blog) {
         ctx.status = 404;
         ctx.body = { error: "Blog not found" };
         return;
       }
+      let other_blogs = await strapi.entityService.findMany(contentTypes, {
+        filters: {
+          id: {
+            $ne: _id,
+          },
+        },
+        populate,
+        sort: { createdAt: "desc" },
+      });
       ctx.body = blog;
+      ctx.body.other_blogs = other_blogs;
     } catch (error) {
       console.error("Main Error:", error);
       ctx.body = { error: "Something went wrong", details: error };
