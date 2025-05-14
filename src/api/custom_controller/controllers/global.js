@@ -93,17 +93,38 @@ module.exports = {
         ctx.body = { error: "Blog not found" };
         return;
       }
-      let other_blogs = await strapi.entityService.findMany(contentTypes, {
-        filters: {
-          id: {
-            $ne: _id,
+      let other_liked_blogs = [];
+      let other_blogs = [];
+      let category = blog.blog_category || null;
+      if (!!category) {
+        other_liked_blogs = await strapi.entityService.findMany(contentTypes, {
+          filters: {
+            blog_category: {
+              id: category.id,
+            },
+            id: {
+              $ne: _id,
+            },
           },
-        },
-        populate,
-        sort: { createdAt: "desc" },
-      });
+          populate,
+          limit: 3,
+          sort: { createdAt: "desc" },
+        });
+        other_blogs = await strapi.entityService.findMany(contentTypes, {
+          filters: {
+            blog_category: {
+              id: {
+                $ne: category.id,
+              },
+            },
+          },
+          populate,
+          sort: { createdAt: "desc" },
+        });
+      }
       ctx.body = blog;
       ctx.body.other_blogs = other_blogs;
+      ctx.body.other_liked_blogs = other_liked_blogs;
     } catch (error) {
       console.error("Main Error:", error);
       ctx.body = { error: "Something went wrong", details: error };
