@@ -71,15 +71,24 @@ module.exports = {
   async getDetailBlog(ctx) {
     const { _id } = ctx.params;
     try {
-      const blog = await strapi.entityService.findOne("api::blog.blog", _id, {
-        populate: {
-          author: {
-            populate: "*",
+      const blog = await strapi.entityService.findOne(
+        "api::insight.insight",
+        _id,
+        {
+          populate: {
+            author: {
+              populate: "*",
+            },
+            blog_category: true,
+            image: true,
           },
-          blog_category: true,
-          image: true,
-        },
-      });
+        }
+      );
+      if (!blog) {
+        ctx.status = 404;
+        ctx.body = { error: "Blog not found" };
+        return;
+      }
       ctx.body = blog;
     } catch (error) {
       console.error("Main Error:", error);
