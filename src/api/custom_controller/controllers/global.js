@@ -95,6 +95,7 @@ module.exports = {
       }
       let other_liked_blogs = [];
       let other_blogs = [];
+      let author_other_blogs = [];
       let category = blog.blog_category || null;
       if (!!category) {
         other_liked_blogs = await strapi.entityService.findMany(contentTypes, {
@@ -122,9 +123,26 @@ module.exports = {
           sort: { createdAt: "desc" },
         });
       }
+      let author = blog.author || null;
+      if (!!author) {
+        author_other_blogs = await strapi.entityService.findMany(contentTypes, {
+          filters: {
+            author: {
+              id: author.id,
+            },
+            id: {
+              $ne: _id,
+            },
+          },
+          populate,
+          limit: 3,
+          sort: { createdAt: "desc" },
+        });
+      }
       ctx.body = blog;
       ctx.body.other_blogs = other_blogs;
       ctx.body.other_liked_blogs = other_liked_blogs;
+      ctx.body.author_other_blogs = author_other_blogs;
     } catch (error) {
       console.error("Main Error:", error);
       ctx.body = { error: "Something went wrong", details: error };
