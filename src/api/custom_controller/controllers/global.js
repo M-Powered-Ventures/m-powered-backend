@@ -57,7 +57,28 @@ module.exports = {
         data = {
           ...data,
           insight: data.insight.filter((item) => item.is_show_on_home),
-          faq: data.faq.filter((item) => item.use_for === "home"),
+          faq: data.faq.filter((item) => item.use_for == "home"),
+        };
+      } else if (slug == "slug=pricing") {
+        console.log("Filtering insights for about page...");
+        data = {
+          ...data,
+          insight: data.insight.filter((item) => item.is_show_on_about),
+          faq: data.faq.filter((item) => item.use_for == "pricing"),
+        };
+      } else if (slug == "slug=services") {
+        console.log("Filtering insights for success story page...");
+        data = {
+          ...data,
+          insight: data.insight.filter((item) => item.is_show_on_success_story),
+          faq: data.faq.filter((item) => item.use_for == "services"),
+        };
+      } else if (slug == "slug=contact") {
+        console.log("Filtering insights for about page...");
+        data = {
+          ...data,
+          insight: data.insight.filter((item) => item.is_show_on_about),
+          faq: data.faq.filter((item) => item.use_for == "contact"),
         };
       }
 

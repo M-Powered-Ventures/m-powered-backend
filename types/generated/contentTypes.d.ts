@@ -788,7 +788,10 @@ export interface ApiFaqFaq extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    use_for: Schema.Attribute.String & Schema.Attribute.DefaultTo<'home'>;
+    use_for: Schema.Attribute.Enumeration<
+      ['home', 'pricing', 'services', 'contact']
+    > &
+      Schema.Attribute.DefaultTo<'home'>;
   };
 }
 

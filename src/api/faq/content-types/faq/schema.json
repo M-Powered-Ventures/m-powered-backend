@@ -26,8 +26,10 @@
     "order": {
       "type": "integer"
     },
+
     "use_for": {
-      "type": "string",
+      "type": "enumeration",
+      "enum": ["home", "pricing", "services", "contact"],
       "default": "home"
     }
   }
