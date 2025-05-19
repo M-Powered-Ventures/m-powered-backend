@@ -52,7 +52,7 @@ module.exports = {
           delete data[collectionName];
         }
       }
-      if (slug == "slug=home") {
+      if (slug == "slug=home" || slug == "home") {
         console.log("Filtering insights for home page...");
         data = {
           ...data,
@@ -63,21 +63,19 @@ module.exports = {
         console.log("Filtering insights for about page...");
         data = {
           ...data,
-          insight: data.insight.filter((item) => item.is_show_on_about),
           faq: data.faq.filter((item) => item.use_for == "pricing"),
         };
-      } else if (slug == "slug=services") {
+      } else if (slug == "slug=services" || slug == "services") {
         console.log("Filtering insights for success story page...");
         data = {
           ...data,
-          insight: data.insight.filter((item) => item.is_show_on_success_story),
+
           faq: data.faq.filter((item) => item.use_for == "services"),
         };
-      } else if (slug == "slug=contact") {
+      } else if (slug == "slug=contact" || slug == "contact") {
         console.log("Filtering insights for about page...");
         data = {
           ...data,
-          insight: data.insight.filter((item) => item.is_show_on_about),
           faq: data.faq.filter((item) => item.use_for == "contact"),
         };
       }
