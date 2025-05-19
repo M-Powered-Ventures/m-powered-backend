@@ -857,6 +857,37 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiSolutionSolution extends Struct.CollectionTypeSchema {
+  collectionName: 'solutions';
+  info: {
+    displayName: 'Solution';
+    pluralName: 'solutions';
+    singularName: 'solution';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    image: Schema.Attribute.Media<'images'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::solution.solution'
+    > &
+      Schema.Attribute.Private;
+    order: Schema.Attribute.Integer;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiSuccessStorySuccessStory
   extends Struct.CollectionTypeSchema {
   collectionName: 'success_stories';
@@ -1473,6 +1504,7 @@ declare module '@strapi/strapi' {
       'api::insight.insight': ApiInsightInsight;
       'api::project.project': ApiProjectProject;
       'api::service.service': ApiServiceService;
+      'api::solution.solution': ApiSolutionSolution;
       'api::success-story.success-story': ApiSuccessStorySuccessStory;
       'api::website-setting.website-setting': ApiWebsiteSettingWebsiteSetting;
       'plugin::content-releases.release': PluginContentReleasesRelease;
