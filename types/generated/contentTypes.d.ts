@@ -369,6 +369,43 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiAboutUsPageAboutUsPage extends Struct.SingleTypeSchema {
+  collectionName: 'about_us_pages';
+  info: {
+    description: '';
+    displayName: 'About Us Page';
+    pluralName: 'about-us-pages';
+    singularName: 'about-us-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    banner_description: Schema.Attribute.Text;
+    banner_heading: Schema.Attribute.String & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    dual_investment_models_heading: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::about-us-page.about-us-page'
+    > &
+      Schema.Attribute.Private;
+    our_approach_description: Schema.Attribute.Text & Schema.Attribute.Required;
+    our_approach_heading: Schema.Attribute.String & Schema.Attribute.Required;
+    our_mission_description: Schema.Attribute.Text;
+    our_mission_heading: Schema.Attribute.String;
+    our_team_heading: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    the_m_powered_advantage_heading: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiAboutAbout extends Struct.SingleTypeSchema {
   collectionName: 'abouts';
   info: {
@@ -389,6 +426,38 @@ export interface ApiAboutAbout extends Struct.SingleTypeSchema {
       Schema.Attribute.Private;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::about.about'> &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiAdvantageAdvantage extends Struct.CollectionTypeSchema {
+  collectionName: 'advantages';
+  info: {
+    description: '';
+    displayName: 'Advantage';
+    pluralName: 'advantages';
+    singularName: 'advantage';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    icon: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::advantage.advantage'
+    > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String;
@@ -452,18 +521,100 @@ export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
   attributes: {
     articles: Schema.Attribute.Relation<'oneToMany', 'api::article.article'>;
     avatar: Schema.Attribute.Media<'images' | 'files' | 'videos'>;
+    biography: Schema.Attribute.Text;
+    created_for: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    designation: Schema.Attribute.String;
     email: Schema.Attribute.String;
+    linkedIn_icon: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    linkedIn_url: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::author.author'
     > &
       Schema.Attribute.Private;
+    mail_icon: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    mail_url: Schema.Attribute.String;
     name: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    twitter_icon: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    twitter_link: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiBlogCategoryBlogCategory
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'blog_categories';
+  info: {
+    displayName: 'Blog Category ';
+    pluralName: 'blog-categories';
+    singularName: 'blog-category';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    icon: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::blog-category.blog-category'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
+  collectionName: 'blogs';
+  info: {
+    description: '';
+    displayName: 'Blog';
+    pluralName: 'blogs';
+    singularName: 'blog';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    author: Schema.Attribute.Relation<'oneToOne', 'api::author.author'>;
+    blog_category: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::blog-category.blog-category'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    detail_description: Schema.Attribute.Blocks;
+    detailed_description: Schema.Attribute.RichText;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::blog.blog'> &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    read_mints: Schema.Attribute.String;
+    short_description: Schema.Attribute.Text;
+    tag: Schema.Attribute.String;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -609,6 +760,7 @@ export interface ApiClientReviewClientReview
 export interface ApiFaqFaq extends Struct.CollectionTypeSchema {
   collectionName: 'faqs';
   info: {
+    description: '';
     displayName: 'FAQ';
     pluralName: 'faqs';
     singularName: 'faq';
@@ -632,6 +784,7 @@ export interface ApiFaqFaq extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    use_for: Schema.Attribute.String & Schema.Attribute.DefaultTo<'home'>;
   };
 }
 
@@ -754,6 +907,7 @@ export interface ApiHomePageSettingHomePageSetting
 export interface ApiInsightInsight extends Struct.CollectionTypeSchema {
   collectionName: 'insights';
   info: {
+    description: '';
     displayName: 'Insight';
     pluralName: 'insights';
     singularName: 'insight';
@@ -762,13 +916,18 @@ export interface ApiInsightInsight extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    author: Schema.Attribute.Relation<'oneToOne', 'api::author.author'>;
     author_image: Schema.Attribute.Media<'images'>;
     author_name: Schema.Attribute.String;
+    blog_category: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::blog-category.blog-category'
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     date: Schema.Attribute.String;
-    detailed_description: Schema.Attribute.Text;
+    detailed_description: Schema.Attribute.RichText;
     image: Schema.Attribute.Media<'images'>;
     is_show_on_home: Schema.Attribute.Boolean;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -779,8 +938,41 @@ export interface ApiInsightInsight extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     order: Schema.Attribute.Integer;
     publishedAt: Schema.Attribute.DateTime;
+    read_mints: Schema.Attribute.String;
     short_description: Schema.Attribute.Text;
+    tag: Schema.Attribute.String;
     title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiInvestmentModelInvestmentModel
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'investment_models';
+  info: {
+    displayName: 'Investment Model';
+    pluralName: 'investment-models';
+    singularName: 'investment-model';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::investment-model.investment-model'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -901,14 +1093,17 @@ export interface ApiSuccessStorySuccessStory
     draftAndPublish: true;
   };
   attributes: {
+    author: Schema.Attribute.Relation<'oneToOne', 'api::author.author'>;
     button_link: Schema.Attribute.String;
     button_text: Schema.Attribute.String;
+    category_type: Schema.Attribute.String;
     challenge_description: Schema.Attribute.Text;
     challenge_heading: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Text;
+    detailed_description: Schema.Attribute.RichText;
     founder_quote: Schema.Attribute.Text;
     founder_quote_heading: Schema.Attribute.String;
     image: Schema.Attribute.Media<'images'>;
@@ -927,6 +1122,50 @@ export interface ApiSuccessStorySuccessStory
     solution_heading: Schema.Attribute.String;
     startup_name: Schema.Attribute.String;
     title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiTeamTeam extends Struct.CollectionTypeSchema {
+  collectionName: 'teams';
+  info: {
+    description: '';
+    displayName: 'Team';
+    pluralName: 'teams';
+    singularName: 'team';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    biography: Schema.Attribute.Text;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    destination: Schema.Attribute.String;
+    github_icon: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    github_url: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    linkedIn_icon: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    linkedIn_url: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::team.team'> &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    social_icon: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    social_url: Schema.Attribute.String;
+    tag_1: Schema.Attribute.String;
+    tag_2: Schema.Attribute.String;
+    tag_3: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -961,7 +1200,15 @@ export interface ApiWebsiteSettingWebsiteSetting
     footer_contact_text: Schema.Attribute.String;
     footer_logo: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     footer_text: Schema.Attribute.Text;
+    github_link: Schema.Attribute.String;
+    github_logo: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
     header_logo: Schema.Attribute.Media<'images'>;
+    instagram_link: Schema.Attribute.String;
+    instagram_logo: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
     linkdin_logo: Schema.Attribute.Media<'images'>;
     linkedIn_link: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -973,6 +1220,10 @@ export interface ApiWebsiteSettingWebsiteSetting
     publishedAt: Schema.Attribute.DateTime;
     services_heading: Schema.Attribute.String;
     support_email: Schema.Attribute.String;
+    tiktok_link: Schema.Attribute.String;
+    tiktok_logo: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
     twiter_link: Schema.Attribute.String;
     twiter_logo: Schema.Attribute.Media<'images'>;
     updatedAt: Schema.Attribute.DateTime;
@@ -1491,9 +1742,13 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::about-us-page.about-us-page': ApiAboutUsPageAboutUsPage;
       'api::about.about': ApiAboutAbout;
+      'api::advantage.advantage': ApiAdvantageAdvantage;
       'api::article.article': ApiArticleArticle;
       'api::author.author': ApiAuthorAuthor;
+      'api::blog-category.blog-category': ApiBlogCategoryBlogCategory;
+      'api::blog.blog': ApiBlogBlog;
       'api::bossiness-partner.bossiness-partner': ApiBossinessPartnerBossinessPartner;
       'api::case-study.case-study': ApiCaseStudyCaseStudy;
       'api::category.category': ApiCategoryCategory;
@@ -1502,10 +1757,12 @@ declare module '@strapi/strapi' {
       'api::global.global': ApiGlobalGlobal;
       'api::home-page-setting.home-page-setting': ApiHomePageSettingHomePageSetting;
       'api::insight.insight': ApiInsightInsight;
+      'api::investment-model.investment-model': ApiInvestmentModelInvestmentModel;
       'api::project.project': ApiProjectProject;
       'api::service.service': ApiServiceService;
       'api::solution.solution': ApiSolutionSolution;
       'api::success-story.success-story': ApiSuccessStorySuccessStory;
+      'api::team.team': ApiTeamTeam;
       'api::website-setting.website-setting': ApiWebsiteSettingWebsiteSetting;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
