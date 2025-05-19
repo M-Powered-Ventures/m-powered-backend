@@ -1,7 +1,13 @@
 module.exports = {
   async getCombinedData(ctx) {
     let originalUrl = ctx.request.url;
-    var slug = originalUrl.split("?").pop();
+    // var slug = originalUrl.split("?").pop();
+    // api/combined-data?slug=service orignla url conatins slug use regex to get slug
+    var slug = originalUrl.match(/slug=([^&]*)/);
+    if (slug) {
+      slug = slug[1];
+    }
+    console.log("Slug:", slug);
     try {
       let contentTypes = Object.keys(strapi.contentTypes).filter((type) =>
         type.startsWith("api::")
