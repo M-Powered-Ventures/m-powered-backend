@@ -14,9 +14,9 @@
   "dependencies": {
     "@ckeditor/strapi-plugin-ckeditor": "^1.1.1",
     "@ef2/strapi-plugin-bold-title-editor": "^2.0.5",
-    "@strapi/plugin-cloud": "5.11.0",
-    "@strapi/plugin-users-permissions": "5.11.0",
-    "@strapi/strapi": "5.11.0",
+    "@strapi/plugin-cloud": "5.13.0",
+    "@strapi/plugin-users-permissions": "5.13.0",
+    "@strapi/strapi": "5.13.0",
     "better-sqlite3": "11.3.0",
     "fs-extra": "^10.0.0",
     "mime-types": "^2.1.27",
