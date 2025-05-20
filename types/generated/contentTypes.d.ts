@@ -1193,6 +1193,10 @@ export interface ApiWebsiteSettingWebsiteSetting
   };
   attributes: {
     address_heading: Schema.Attribute.String;
+    blog_link: Schema.Attribute.String;
+    blog_title: Schema.Attribute.String;
+    case_studies_link: Schema.Attribute.String;
+    case_studies_title: Schema.Attribute.String;
     complete_address: Schema.Attribute.Text;
     contact_number_1: Schema.Attribute.String;
     contact_number_2: Schema.Attribute.String;
@@ -1204,6 +1208,8 @@ export interface ApiWebsiteSettingWebsiteSetting
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     facebook_link: Schema.Attribute.String;
+    faq_link: Schema.Attribute.String;
+    faq_text: Schema.Attribute.String;
     footer_contact_text: Schema.Attribute.String;
     footer_logo: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     footer_text: Schema.Attribute.Text;
@@ -1224,9 +1230,17 @@ export interface ApiWebsiteSettingWebsiteSetting
       'api::website-setting.website-setting'
     > &
       Schema.Attribute.Private;
+    pricing_link: Schema.Attribute.String;
+    pricing_text: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     services_heading: Schema.Attribute.String;
+    startup_resources_link: Schema.Attribute.String;
+    startup_resources_text: Schema.Attribute.String;
     support_email: Schema.Attribute.String;
+    tech_guides_link: Schema.Attribute.String;
+    tech_guides_text: Schema.Attribute.String;
+    tech_stack_link: Schema.Attribute.String;
+    tech_stack_text: Schema.Attribute.String;
     tiktok_link: Schema.Attribute.String;
     tiktok_logo: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'

@@ -1,8 +1,6 @@
 module.exports = {
   async getCombinedData(ctx) {
     let originalUrl = ctx.request.url;
-    // var slug = originalUrl.split("?").pop();
-    // api/combined-data?slug=service orignla url conatins slug use regex to get slug
     var slug = originalUrl.match(/slug=([^&]*)/);
     if (slug) {
       slug = slug[1];
@@ -87,6 +85,8 @@ module.exports = {
       }
 
       ctx.body = data;
+      ctx.status = 200;
+      ctx.set("Cache-Control", "no-store");
     } catch (error) {
       console.error("Main Error:", error);
       ctx.body = { error: "Something went wrong", details: error };

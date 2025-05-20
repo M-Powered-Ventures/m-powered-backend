@@ -92,34 +92,37 @@
       "type": "text"
     },
     "instagram_logo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "github_logo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "tiktok_logo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "instagram_link": {
       "type": "string"
@@ -128,6 +131,48 @@
       "type": "string"
     },
     "tiktok_link": {
+      "type": "string"
+    },
+    "blog_title": {
+      "type": "string"
+    },
+    "blog_link": {
+      "type": "string"
+    },
+    "case_studies_title": {
+      "type": "string"
+    },
+    "case_studies_link": {
+      "type": "string"
+    },
+    "startup_resources_text": {
+      "type": "string"
+    },
+    "startup_resources_link": {
+      "type": "string"
+    },
+    "tech_guides_text": {
+      "type": "string"
+    },
+    "tech_guides_link": {
+      "type": "string"
+    },
+    "faq_text": {
+      "type": "string"
+    },
+    "faq_link": {
+      "type": "string"
+    },
+    "pricing_text": {
+      "type": "string"
+    },
+    "pricing_link": {
+      "type": "string"
+    },
+    "tech_stack_text": {
+      "type": "string"
+    },
+    "tech_stack_link": {
       "type": "string"
     }
   }
