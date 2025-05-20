@@ -63,6 +63,15 @@
     },
     "tag": {
       "type": "string"
+    },
+    "meta_title": {
+      "type": "string"
+    },
+    "meta_description": {
+      "type": "text"
+    },
+    "meta_keyword": {
+      "type": "string"
     }
   }
 }
