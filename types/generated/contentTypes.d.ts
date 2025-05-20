@@ -410,35 +410,6 @@ export interface ApiAboutUsPageAboutUsPage extends Struct.SingleTypeSchema {
   };
 }
 
-export interface ApiAboutAbout extends Struct.SingleTypeSchema {
-  collectionName: 'abouts';
-  info: {
-    description: 'Write about yourself and the content you create';
-    displayName: 'About';
-    pluralName: 'abouts';
-    singularName: 'about';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    blocks: Schema.Attribute.DynamicZone<
-      ['shared.media', 'shared.quote', 'shared.rich-text', 'shared.slider']
-    >;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::about.about'> &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    title: Schema.Attribute.String;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiAdvantageAdvantage extends Struct.CollectionTypeSchema {
   collectionName: 'advantages';
   info: {
@@ -980,38 +951,6 @@ export interface ApiInvestmentModelInvestmentModel
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String & Schema.Attribute.Required;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiProjectProject extends Struct.CollectionTypeSchema {
-  collectionName: 'projects';
-  info: {
-    description: '';
-    displayName: 'Project';
-    pluralName: 'projects';
-    singularName: 'project';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::project.project'
-    > &
-      Schema.Attribute.Private;
-    order: Schema.Attribute.Integer;
-    project_image: Schema.Attribute.Media<'images'>;
-    publishedAt: Schema.Attribute.DateTime;
-    short_description: Schema.Attribute.Text;
-    title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1764,7 +1703,6 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::about-us-page.about-us-page': ApiAboutUsPageAboutUsPage;
-      'api::about.about': ApiAboutAbout;
       'api::advantage.advantage': ApiAdvantageAdvantage;
       'api::article.article': ApiArticleArticle;
       'api::author.author': ApiAuthorAuthor;
@@ -1779,7 +1717,6 @@ declare module '@strapi/strapi' {
       'api::home-page-setting.home-page-setting': ApiHomePageSettingHomePageSetting;
       'api::insight.insight': ApiInsightInsight;
       'api::investment-model.investment-model': ApiInvestmentModelInvestmentModel;
-      'api::project.project': ApiProjectProject;
       'api::service.service': ApiServiceService;
       'api::solution.solution': ApiSolutionSolution;
       'api::success-story.success-story': ApiSuccessStorySuccessStory;
