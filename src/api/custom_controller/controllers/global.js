@@ -61,25 +61,28 @@ module.exports = {
         data = {
           ...data,
           insight: data.insight.filter((item) => item.is_show_on_home),
+          all_insights: data.insight,
           faq: data.faq.filter((item) => item.use_for == "home"),
         };
       } else if (slug == "slug=pricing") {
         console.log("Filtering insights for about page...");
         data = {
           ...data,
+          all_insights: data.insight,
           faq: data.faq.filter((item) => item.use_for == "pricing"),
         };
       } else if (slug == "slug=services" || slug == "services") {
         console.log("Filtering insights for success story page...");
         data = {
           ...data,
-
+          all_insights: data.insight,
           faq: data.faq.filter((item) => item.use_for == "services"),
         };
       } else if (slug == "slug=contact" || slug == "contact") {
         console.log("Filtering insights for about page...");
         data = {
           ...data,
+          all_insights: data.insight,
           faq: data.faq.filter((item) => item.use_for == "contact"),
         };
       }
