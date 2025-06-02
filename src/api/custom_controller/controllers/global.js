@@ -267,4 +267,48 @@ module.exports = {
       ctx.status = 500;
     }
   },
+
+  async addContact(ctx) {
+    const myHeaders = new Headers();
+    myHeaders.append("Authorization", "Token token=1Qj7_cK_ZA9Ie6Z6pwmWFA");
+    myHeaders.append("Content-Type", "application/json");
+    let url =
+      "https://mpoweredventures.myfreshworks.com/crm/sales/api/contacts";
+    console.log("URL:", url);
+    console.log("Request Body:", ctx.request.body);
+
+    const raw = JSON.stringify({
+      contact: {
+        ...ctx.request.body,
+      },
+    });
+
+    const requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
+    };
+
+    try {
+      const response = await fetch(url, requestOptions);
+      console.log("Response Status:", response);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const result = await response.json();
+      console.log("Response Data:", result);
+      if (result.error) {
+        ctx.body = { error: result.error };
+        ctx.status = 400;
+        return;
+      }
+
+      ctx.status = 200;
+    } catch (error) {
+      console.error("Error adding contact:", error);
+      ctx.body = { error: "Something went wrong", details: error.message };
+      ctx.status = 500;
+    }
+  },
 };

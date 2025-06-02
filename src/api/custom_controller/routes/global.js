@@ -24,5 +24,13 @@ module.exports = {
         auth: false,
       },
     },
+    {
+      method: "POST",
+      path: "/add_contact",
+      handler: "global.addContact",
+      config: {
+        auth: false,
+      },
+    },
   ],
 };
