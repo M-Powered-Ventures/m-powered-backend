@@ -105,6 +105,7 @@ module.exports = {
           meta_description: item.seo
             ? item.seo.metaDescription
             : item.meta_description,
+          meta_keyword: item.seo ? item.seo.metaKeyword : item.meta_keyword,
         };
       });
 
@@ -292,6 +293,7 @@ module.exports = {
             meta_description: blog.seo
               ? blog.seo.metaDescription
               : blog.meta_description,
+            meta_keyword: blog.seo ? blog.seo.metaKeyword : blog.meta_keywords,
           };
         }),
 
