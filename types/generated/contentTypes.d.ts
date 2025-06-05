@@ -559,43 +559,6 @@ export interface ApiBlogCategoryBlogCategory
   };
 }
 
-export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
-  collectionName: 'blogs';
-  info: {
-    description: '';
-    displayName: 'Blog';
-    pluralName: 'blogs';
-    singularName: 'blog';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    author: Schema.Attribute.Relation<'oneToOne', 'api::author.author'>;
-    blog_category: Schema.Attribute.Relation<
-      'oneToOne',
-      'api::blog-category.blog-category'
-    >;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    detail_description: Schema.Attribute.Blocks;
-    detailed_description: Schema.Attribute.RichText;
-    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::blog.blog'> &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    read_mints: Schema.Attribute.String;
-    short_description: Schema.Attribute.Text;
-    tag: Schema.Attribute.String;
-    title: Schema.Attribute.String & Schema.Attribute.Required;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiBossinessPartnerBossinessPartner
   extends Struct.CollectionTypeSchema {
   collectionName: 'bossiness_partners';
@@ -920,6 +883,7 @@ export interface ApiInsightInsight extends Struct.CollectionTypeSchema {
     order: Schema.Attribute.Integer;
     publishedAt: Schema.Attribute.DateTime;
     read_mints: Schema.Attribute.String;
+    seo: Schema.Attribute.Component<'shared.seo', false>;
     short_description: Schema.Attribute.Text;
     tag: Schema.Attribute.String;
     title: Schema.Attribute.String;
@@ -1710,7 +1674,6 @@ declare module '@strapi/strapi' {
       'api::article.article': ApiArticleArticle;
       'api::author.author': ApiAuthorAuthor;
       'api::blog-category.blog-category': ApiBlogCategoryBlogCategory;
-      'api::blog.blog': ApiBlogBlog;
       'api::bossiness-partner.bossiness-partner': ApiBossinessPartnerBossinessPartner;
       'api::case-study.case-study': ApiCaseStudyCaseStudy;
       'api::category.category': ApiCategoryCategory;

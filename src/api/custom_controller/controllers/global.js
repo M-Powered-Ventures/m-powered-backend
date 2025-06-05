@@ -30,6 +30,7 @@ module.exports = {
               },
               blog_category: true, // add other relations if needed
               image: true,
+              seo: true,
             };
           } else if (collectionName === "success-story") {
             populate = {
@@ -86,6 +87,26 @@ module.exports = {
           faq: data.faq.filter((item) => item.use_for == "contact"),
         };
       }
+
+      data.all_insights = data?.all_insights?.map((item) => {
+        return {
+          ...item,
+          meta_title: item.seo ? item.seo.metaTitle : item.meta_title,
+          meta_description: item.seo
+            ? item.seo.metaDescription
+            : item.meta_description,
+        };
+      });
+
+      data.insight = data?.insight?.map((item) => {
+        return {
+          ...item,
+          meta_title: item.seo ? item.seo.metaTitle : item.meta_title,
+          meta_description: item.seo
+            ? item.seo.metaDescription
+            : item.meta_description,
+        };
+      });
 
       ctx.body = data;
       ctx.status = 200;
