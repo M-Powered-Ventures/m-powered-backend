@@ -285,7 +285,16 @@ module.exports = {
         loadMoreUrl = "";
       }
       ctx.body = {
-        blogs,
+        blogs: blogs.map((blog) => {
+          return {
+            ...blog,
+            meta_title: blog.seo ? blog.seo.metaTitle : blog.meta_title,
+            meta_description: blog.seo
+              ? blog.seo.metaDescription
+              : blog.meta_description,
+          };
+        }),
+
         total,
         total_pages,
         loadMoreUrl,
