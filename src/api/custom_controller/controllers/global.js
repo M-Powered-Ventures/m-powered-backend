@@ -135,7 +135,7 @@ module.exports = {
       contentTypes = "api::success-story.success-story";
     }
     try {
-      const blog = await strapi.entityService.findOne(contentTypes, _id, {
+      var blog = await strapi.entityService.findOne(contentTypes, _id, {
         populate,
       });
       if (!blog) {
@@ -189,6 +189,13 @@ module.exports = {
           sort: { createdAt: "desc" },
         });
       }
+
+      if (!!blog.seo) {
+        blog.meta_title = blog.seo.metaTitle ?? blog?.meta_title;
+        blog.meta_description =
+          blog.seo.metaDescription ?? blog?.meta_description;
+      }
+
       ctx.body = blog;
       ctx.body.other_blogs = other_blogs;
       ctx.body.other_liked_blogs = other_liked_blogs;
