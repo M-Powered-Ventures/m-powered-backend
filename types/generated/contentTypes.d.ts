@@ -877,9 +877,6 @@ export interface ApiInsightInsight extends Struct.CollectionTypeSchema {
       'api::insight.insight'
     > &
       Schema.Attribute.Private;
-    meta_description: Schema.Attribute.Text;
-    meta_keyword: Schema.Attribute.String;
-    meta_title: Schema.Attribute.String;
     order: Schema.Attribute.Integer;
     publishedAt: Schema.Attribute.DateTime;
     read_mints: Schema.Attribute.String;

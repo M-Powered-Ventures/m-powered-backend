@@ -33,17 +33,13 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": [
-        "images"
-      ]
+      "allowedTypes": ["images"]
     },
     "author_image": {
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": [
-        "images"
-      ]
+      "allowedTypes": ["images"]
     },
     "author": {
       "type": "relation",
@@ -64,15 +60,7 @@
     "tag": {
       "type": "string"
     },
-    "meta_title": {
-      "type": "string"
-    },
-    "meta_description": {
-      "type": "text"
-    },
-    "meta_keyword": {
-      "type": "string"
-    },
+
     "seo": {
       "type": "component",
       "repeatable": false,
