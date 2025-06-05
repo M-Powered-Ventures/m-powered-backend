@@ -126,10 +126,11 @@ module.exports = {
         populate: "*",
       },
       image: true,
+      seo: true,
     };
     if (type === "insight") {
       contentTypes = "api::insight.insight";
-      populate = { ...populate, blog_category: true };
+      populate = { ...populate, blog_category: true, seo: true };
     } else if (type === "success_story") {
       contentTypes = "api::success-story.success-story";
     }
@@ -229,6 +230,7 @@ module.exports = {
               },
               blog_category: true,
               image: true,
+              seo: true,
             },
             start: Number(skip),
             limit: Number(limit),
@@ -252,6 +254,7 @@ module.exports = {
               author: { populate: "*" },
               blog_category: true,
               image: true,
+              seo: true,
             },
           }),
           strapi.entityService.findMany("api::insight.insight", {
@@ -261,6 +264,7 @@ module.exports = {
               author: { populate: "*" },
               blog_category: true,
               image: true,
+              seo: true,
             },
           }),
           strapi.entityService.findMany("api::blog-category.blog-category", {
