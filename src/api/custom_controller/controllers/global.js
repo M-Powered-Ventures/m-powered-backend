@@ -122,6 +122,7 @@ module.exports = {
     const { _id } = ctx.params;
     let type = ctx.query.type ?? "insight";
     let contentTypes = "api::insight.insight";
+
     let populate = {
       author: {
         populate: "*",
@@ -136,10 +137,23 @@ module.exports = {
       contentTypes = "api::success-story.success-story";
     }
     try {
-      var blog = await strapi.entityService.findOne(contentTypes, _id, {
-        populate,
-      });
-      if (!blog) {
+      let blog = {};
+
+      if (contentTypes == "api::insight.insight") {
+        let blogs = await strapi.entityService.findMany(contentTypes, {
+          filters: { slug: _id },
+          populate,
+        });
+        if (blogs && blogs.length > 0) {
+          blog = blogs[0];
+        }
+      } else if (contentTypes == "api::success-story.success-story") {
+        blog = await strapi.entityService.findOne(contentTypes, _id, {
+          populate,
+        });
+      }
+
+      if (!blog || Object.keys(blog).length === 0) {
         ctx.status = 404;
         ctx.body = { error: "Blog not found" };
         return;
@@ -155,7 +169,7 @@ module.exports = {
               id: category.id,
             },
             id: {
-              $ne: _id,
+              $ne: blog.id,
             },
           },
           populate,
@@ -182,7 +196,7 @@ module.exports = {
               id: author.id,
             },
             id: {
-              $ne: _id,
+              $ne: blog.id,
             },
           },
           populate,
