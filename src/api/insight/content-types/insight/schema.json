@@ -33,17 +33,13 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": [
-        "images"
-      ]
+      "allowedTypes": ["images"]
     },
     "author_image": {
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": [
-        "images"
-      ]
+      "allowedTypes": ["images"]
     },
     "author": {
       "type": "relation",
@@ -70,7 +66,9 @@
       "component": "shared.seo"
     },
     "slug": {
-      "type": "string"
+      "type": "string",
+
+      "disabled": true
     }
   }
 }
