@@ -18,7 +18,6 @@ async function generateUniqueSlug(event) {
 
   // Ensure the title exists in the data
   if (event.params.data.title) {
-    // Generate the initial slug
     let baseSlug = slugify(event.params.data.title, {
       lower: true,
       strict: true,
