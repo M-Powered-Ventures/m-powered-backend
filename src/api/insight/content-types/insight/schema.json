@@ -26,21 +26,14 @@
     "is_show_on_home": {
       "type": "boolean"
     },
-    "author_name": {
-      "type": "string"
-    },
+
     "image": {
       "type": "media",
       "multiple": false,
       "required": false,
       "allowedTypes": ["images"]
     },
-    "author_image": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": ["images"]
-    },
+
     "author": {
       "type": "relation",
       "relation": "oneToOne",
