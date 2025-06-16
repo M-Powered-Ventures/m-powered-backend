@@ -141,7 +141,12 @@ module.exports = {
       if (contentTypes == "api::insight.insight") {
         let blogs = await strapi.entityService.findMany(contentTypes, {
           filters: { slug: _id },
-          populate,
+          populate: {
+            author: {
+              populate: "*",
+            },
+            image: true,
+          },
         });
         if (blogs && blogs.length > 0) {
           blog = blogs[0];
@@ -216,7 +221,7 @@ module.exports = {
       ctx.body.author_other_blogs = author_other_blogs;
     } catch (error) {
       console.error("Main Error:", error);
-      ctx.body = { error: "Something went wrong", details: error };
+      ctx.body = { error: "Something went wrong >>>>", details: error };
       ctx.status = 500;
     }
   },
