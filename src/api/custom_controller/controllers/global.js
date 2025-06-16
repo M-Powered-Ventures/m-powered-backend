@@ -141,12 +141,7 @@ module.exports = {
       if (contentTypes == "api::insight.insight") {
         let blogs = await strapi.entityService.findMany(contentTypes, {
           filters: { slug: _id },
-          populate: {
-            author: {
-              populate: "*",
-            },
-            image: true,
-          },
+          populate,
         });
         if (blogs && blogs.length > 0) {
           blog = blogs[0];
