@@ -128,7 +128,6 @@ module.exports = {
         populate: "*",
       },
       image: true,
-      seo: true,
     };
     if (type === "insight") {
       contentTypes = "api::insight.insight";
