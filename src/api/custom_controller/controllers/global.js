@@ -133,7 +133,7 @@ module.exports = {
     if (type === "insight") {
       contentTypes = "api::insight.insight";
       populate = { ...populate, blog_category: true, seo: true };
-    } else if (type === "success_story") {
+    } else {
       contentTypes = "api::success-story.success-story";
     }
     try {
@@ -147,7 +147,7 @@ module.exports = {
         if (blogs && blogs.length > 0) {
           blog = blogs[0];
         }
-      } else if (contentTypes == "api::success-story.success-story") {
+      } else {
         blog = await strapi.entityService.findOne(contentTypes, _id, {
           populate,
         });
