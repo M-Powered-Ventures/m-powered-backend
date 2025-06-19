@@ -20,26 +20,26 @@ async function generateUniqueSlug(event) {
       strict: true,
     });
 
-    let slug = baseSlug;
+    let title_slug = baseSlug;
     let counter = 1;
 
     // Check for existing slugs in the database
     const existingEntries = await strapi.entityService.findMany(
       "api::insight.insight",
       {
-        filters: { slug: { $startsWith: baseSlug } },
-        fields: ["slug"],
+        filters: { title_slug: { $startsWith: baseSlug } },
+        fields: ["title_slug"],
       }
     );
 
     // If a duplicate slug exists, append a counter to make it unique
-    while (existingEntries.some((entry) => entry.slug === slug)) {
-      slug = `${baseSlug}-${String(counter).padStart(2, "0")}`;
+    while (existingEntries.some((entry) => entry.title_slug === title_slug)) {
+      title_slug = `${baseSlug}-${String(counter).padStart(2, "0")}`;
       counter++;
     }
 
     // Assign the unique slug to the data being created or updated
-    event.params.data.slug = slug;
+    event.params.data.title_slug = title_slug;
   } else {
     console.warn("Title is missing. Slug cannot be generated.");
   }

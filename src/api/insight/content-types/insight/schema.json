@@ -56,12 +56,6 @@
       "repeatable": false,
       "component": "shared.seo"
     },
-    "slug": {
-      "type": "uid",
-      "targetField": "title",
-      "required": true,
-      "editable": true
-    },
 
     "title_slug": {
       "type": "uid",
