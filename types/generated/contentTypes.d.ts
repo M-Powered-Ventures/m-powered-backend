@@ -883,6 +883,7 @@ export interface ApiInsightInsight extends Struct.CollectionTypeSchema {
     slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
     tag: Schema.Attribute.String;
     title: Schema.Attribute.String;
+    title_slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
