@@ -62,17 +62,6 @@ export interface SharedSlider extends Struct.ComponentSchema {
   };
 }
 
-export interface SharedSlugGenerator extends Struct.ComponentSchema {
-  collectionName: 'components_shared_slug_generators';
-  info: {
-    displayName: 'slug-generator';
-    icon: 'check';
-  };
-  attributes: {
-    slug: Schema.Attribute.String;
-  };
-}
-
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
@@ -81,7 +70,6 @@ declare module '@strapi/strapi' {
       'shared.rich-text': SharedRichText;
       'shared.seo': SharedSeo;
       'shared.slider': SharedSlider;
-      'shared.slug-generator': SharedSlugGenerator;
     }
   }
 }
