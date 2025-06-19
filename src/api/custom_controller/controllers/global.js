@@ -317,8 +317,30 @@ module.exports = {
         total,
         total_pages,
         loadMoreUrl,
-        other_blogs,
-        latest_blogs,
+        other_blogs: other_blogs.map((blog) => {
+          return {
+            ...blog,
+            meta_title: blog.seo ? blog.seo.metaTitle : blog.meta_title,
+            meta_description: blog.seo
+              ? blog.seo.metaDescription
+              : blog.meta_description,
+            meta_keyword: blog.seo ? blog.seo.metaKeyword : blog.meta_keywords,
+            slug: blog.title_slug ?? "",
+          };
+        }),
+
+        latest_blogs: latest_blogs.map((blog) => {
+          return {
+            ...blog,
+            meta_title: blog.seo ? blog.seo.metaTitle : blog.meta_title,
+            meta_description: blog.seo
+              ? blog.seo.metaDescription
+              : blog.meta_description,
+            meta_keyword: blog.seo ? blog.seo.metaKeyword : blog.meta_keywords,
+            slug: blog.title_slug ?? "",
+          };
+        }),
+
         blog_categorys,
       };
     } catch (error) {
