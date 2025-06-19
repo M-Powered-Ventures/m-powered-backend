@@ -4,7 +4,6 @@ module.exports = {
   async beforeCreate(event) {
     await generateUniqueSlug(event);
   },
-
   async beforeUpdate(event) {
     // Only regenerate the slug if the title is being updated
     if (event.params.data.title) {
