@@ -214,9 +214,41 @@ module.exports = {
       blog.slug = blog.title_slug;
 
       ctx.body = blog;
-      ctx.body.other_blogs = other_blogs;
-      ctx.body.other_liked_blogs = other_liked_blogs;
-      ctx.body.author_other_blogs = author_other_blogs;
+      ctx.body.other_blogs = other_blogs.map((blog) => {
+        return {
+          ...blog,
+          meta_title: blog.seo ? blog.seo.metaTitle : blog.meta_title,
+          meta_description: blog.seo
+            ? blog.seo.metaDescription
+            : blog.meta_description,
+          meta_keyword: blog.seo ? blog.seo.metaKeyword : blog.meta_keywords,
+          slug: blog.title_slug ?? "",
+        };
+      });
+
+      ctx.body.other_liked_blogs = other_liked_blogs.map((blog) => {
+        return {
+          ...blog,
+          meta_title: blog.seo ? blog.seo.metaTitle : blog.meta_title,
+          meta_description: blog.seo
+            ? blog.seo.metaDescription
+            : blog.meta_description,
+          meta_keyword: blog.seo ? blog.seo.metaKeyword : blog.meta_keywords,
+          slug: blog.title_slug ?? "",
+        };
+      });
+
+      ctx.body.author_other_blogs = author_other_blogs.map((blog) => {
+        return {
+          ...blog,
+          meta_title: blog.seo ? blog.seo.metaTitle : blog.meta_title,
+          meta_description: blog.seo
+            ? blog.seo.metaDescription
+            : blog.meta_description,
+          meta_keyword: blog.seo ? blog.seo.metaKeyword : blog.meta_keywords,
+          slug: blog.title_slug ?? "",
+        };
+      });
     } catch (error) {
       console.error("Main Error:", error);
       ctx.body = { error: "Something went wrong >>>>", details: error };
