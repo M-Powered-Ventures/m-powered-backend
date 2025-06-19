@@ -26,14 +26,14 @@
     "is_show_on_home": {
       "type": "boolean"
     },
-
     "image": {
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
-
     "author": {
       "type": "relation",
       "relation": "oneToOne",
@@ -59,9 +59,8 @@
       "component": "shared.seo"
     },
     "slug": {
-      "type": "string",
-      "disabled": false,
-      "unique": true
+      "type": "uid",
+      "targetField": "title"
     }
   }
 }

@@ -880,7 +880,7 @@ export interface ApiInsightInsight extends Struct.CollectionTypeSchema {
     read_mints: Schema.Attribute.String;
     seo: Schema.Attribute.Component<'shared.seo', false>;
     short_description: Schema.Attribute.Text;
-    slug: Schema.Attribute.String & Schema.Attribute.Unique;
+    slug: Schema.Attribute.UID<'title'>;
     tag: Schema.Attribute.String;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;

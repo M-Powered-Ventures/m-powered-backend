@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_shared_slug_generators",
+  "info": {
+    "displayName": "slug-generator",
+    "icon": "check"
+  },
+  "options": {},
+  "attributes": {
+    "slug": {
+      "type": "string"
+    }
+  }
+}
