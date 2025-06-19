@@ -14,8 +14,6 @@ module.exports = {
 };
 
 async function generateUniqueSlug(event) {
-  console.log("Generating slug...", event.params.data);
-
   // Ensure the title exists in the data
   if (event.params.data.title) {
     let baseSlug = slugify(event.params.data.title, {
@@ -40,8 +38,6 @@ async function generateUniqueSlug(event) {
       slug = `${baseSlug}-${String(counter).padStart(2, "0")}`;
       counter++;
     }
-
-    console.log("Generated unique slug:", slug);
 
     // Assign the unique slug to the data being created or updated
     event.params.data.slug = slug;
