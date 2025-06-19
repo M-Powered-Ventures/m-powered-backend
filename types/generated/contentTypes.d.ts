@@ -858,8 +858,6 @@ export interface ApiInsightInsight extends Struct.CollectionTypeSchema {
   };
   attributes: {
     author: Schema.Attribute.Relation<'oneToOne', 'api::author.author'>;
-    author_image: Schema.Attribute.Media<'images'>;
-    author_name: Schema.Attribute.String;
     blog_category: Schema.Attribute.Relation<
       'oneToOne',
       'api::blog-category.blog-category'
@@ -882,7 +880,7 @@ export interface ApiInsightInsight extends Struct.CollectionTypeSchema {
     read_mints: Schema.Attribute.String;
     seo: Schema.Attribute.Component<'shared.seo', false>;
     short_description: Schema.Attribute.Text;
-    slug: Schema.Attribute.String;
+    slug: Schema.Attribute.String & Schema.Attribute.Unique;
     tag: Schema.Attribute.String;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
