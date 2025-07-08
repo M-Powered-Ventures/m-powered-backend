@@ -20,11 +20,7 @@ module.exports = {
       for (const type of contentTypes) {
         const collectionName = type.split("::")[1].split(".")[0];
         try {
-          let filters = {
-            publishedAt: {
-              $ne: null, // Ensure only published items are fetched
-            },
-          };
+          let filters = {};
           let populate = "*";
           console.log("Collection Name:", collectionName);
           if (collectionName === "blog" || collectionName === "insight") {
@@ -93,9 +89,6 @@ module.exports = {
       }
 
       data.all_insights = data?.all_insights?.map((item) => {
-        if (!item.publishedAt || item.publishedAt === null) {
-          return null; // Skip unpublished insights
-        }
         return {
           ...item,
           meta_title: item.seo ? item.seo.metaTitle : item.meta_title,
@@ -106,9 +99,6 @@ module.exports = {
       });
 
       data.insight = data?.insight?.map((item) => {
-        if (!item.publishedAt || item.publishedAt === null) {
-          return null; // Skip unpublished insights
-        }
         return {
           ...item,
           meta_title: item.seo ? item.seo.metaTitle : item.meta_title,
@@ -225,9 +215,6 @@ module.exports = {
 
       ctx.body = blog;
       ctx.body.other_blogs = other_blogs.map((blog) => {
-        if (!blog.publishedAt || blog.publishedAt === null) {
-          return null; // Skip unpublished blogs
-        }
         return {
           ...blog,
           meta_title: blog.seo ? blog.seo.metaTitle : blog.meta_title,
@@ -240,9 +227,6 @@ module.exports = {
       });
 
       ctx.body.other_liked_blogs = other_liked_blogs.map((blog) => {
-        if (!blog.publishedAt || blog.publishedAt === null) {
-          return null; // Skip unpublished blogs
-        }
         return {
           ...blog,
           meta_title: blog.seo ? blog.seo.metaTitle : blog.meta_title,
@@ -255,9 +239,6 @@ module.exports = {
       });
 
       ctx.body.author_other_blogs = author_other_blogs.map((blog) => {
-        if (!blog.publishedAt || blog.publishedAt === null) {
-          return null; // Skip unpublished blogs
-        }
         return {
           ...blog,
           meta_title: blog.seo ? blog.seo.metaTitle : blog.meta_title,
@@ -381,9 +362,6 @@ module.exports = {
         total_pages,
         loadMoreUrl,
         other_blogs: other_blogs.map((blog) => {
-          if (!blog.publishedAt || blog.publishedAt === null) {
-            return null; // Skip unpublished blogs
-          }
           return {
             ...blog,
             meta_title: blog.seo ? blog.seo.metaTitle : blog.meta_title,
@@ -396,9 +374,6 @@ module.exports = {
         }),
 
         latest_blogs: latest_blogs.map((blog) => {
-          if (!blog.publishedAt || blog.publishedAt === null) {
-            return null; // Skip unpublished blogs
-          }
           return {
             ...blog,
             meta_title: blog.seo ? blog.seo.metaTitle : blog.meta_title,
