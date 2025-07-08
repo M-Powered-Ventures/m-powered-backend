@@ -20,7 +20,11 @@ module.exports = {
       for (const type of contentTypes) {
         const collectionName = type.split("::")[1].split(".")[0];
         try {
-          let filters = {};
+          let filters = {
+            publishedAt: {
+              $ne: null, // Ensure only published items are fetched
+            },
+          };
           let populate = "*";
           console.log("Collection Name:", collectionName);
           if (collectionName === "blog" || collectionName === "insight") {
@@ -279,6 +283,9 @@ module.exports = {
               blog_category: {
                 id: category,
               },
+              publishedAt: {
+                $ne: null,
+              },
             },
             populate: {
               author: {
@@ -295,6 +302,9 @@ module.exports = {
             filters: {
               blog_category: {
                 id: category,
+              },
+              publishedAt: {
+                $ne: null,
               },
             },
           }),
@@ -316,6 +326,12 @@ module.exports = {
           strapi.entityService.findMany("api::insight.insight", {
             sort: { createdAt: "desc" },
             limit: 3,
+            filters: {
+              publishedAt: {
+                $ne: null,
+              },
+            },
+
             populate: {
               author: { populate: "*" },
               blog_category: true,
