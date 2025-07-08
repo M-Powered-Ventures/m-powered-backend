@@ -31,6 +31,11 @@ module.exports = {
               blog_category: true, // add other relations if needed
               image: true,
               seo: true,
+              // publishedAt: true,
+            };
+
+            filters = {
+              is_published: true, // filter for published blogs
             };
           } else if (collectionName === "success-story") {
             populate = {
@@ -43,7 +48,7 @@ module.exports = {
             };
           }
           data[collectionName] = await strapi.entityService.findMany(type, {
-            filters,
+            filters: filters,
             populate,
           });
           const formattedCollectionName = collectionName.replace(/-/g, "_");
@@ -141,7 +146,10 @@ module.exports = {
 
       if (contentTypes == "api::insight.insight") {
         let blogs = await strapi.entityService.findMany(contentTypes, {
-          filters: { title_slug: _id },
+          filters: {
+            title_slug: _id,
+            is_published: true, // filter for published blogs
+          },
           populate,
         });
         if (blogs && blogs.length > 0) {
@@ -171,6 +179,7 @@ module.exports = {
             id: {
               $ne: blog.id,
             },
+            is_published: true, // filter for published blogs
           },
           populate,
           limit: 3,
@@ -183,6 +192,8 @@ module.exports = {
                 $ne: category.id,
               },
             },
+
+            is_published: true, // filter for published blogs
           },
           populate,
           sort: { createdAt: "desc" },
@@ -198,6 +209,7 @@ module.exports = {
             id: {
               $ne: blog.id,
             },
+            is_published: true, // filter for published blogs
           },
           populate,
           limit: 3,
@@ -279,6 +291,7 @@ module.exports = {
               blog_category: {
                 id: category,
               },
+              is_published: true, // filter for published blogs
             },
             populate: {
               author: {
@@ -296,6 +309,7 @@ module.exports = {
               blog_category: {
                 id: category,
               },
+              is_published: true, // filter for published blogs
             },
           }),
           strapi.entityService.findMany("api::insight.insight", {
@@ -305,6 +319,7 @@ module.exports = {
                   $ne: category,
                 },
               },
+              is_published: true, // filter for published blogs
             },
             populate: {
               author: { populate: "*" },
@@ -321,6 +336,9 @@ module.exports = {
               blog_category: true,
               image: true,
               seo: true,
+            },
+            filters: {
+              is_published: true, // filter for published blogs
             },
           }),
           strapi.entityService.findMany("api::blog-category.blog-category", {

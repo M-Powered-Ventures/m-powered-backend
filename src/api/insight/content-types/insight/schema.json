@@ -30,7 +30,9 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
     "author": {
       "type": "relation",
@@ -56,12 +58,15 @@
       "repeatable": false,
       "component": "shared.seo"
     },
-
     "title_slug": {
       "type": "uid",
       "targetField": "title",
       "required": true,
       "editable": true
+    },
+    "is_published": {
+      "type": "boolean",
+      "default": true
     }
   }
 }

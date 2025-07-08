@@ -868,6 +868,7 @@ export interface ApiInsightInsight extends Struct.CollectionTypeSchema {
     date: Schema.Attribute.String;
     detailed_description: Schema.Attribute.RichText;
     image: Schema.Attribute.Media<'images'>;
+    is_published: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     is_show_on_home: Schema.Attribute.Boolean;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
