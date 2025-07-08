@@ -279,9 +279,6 @@ module.exports = {
               blog_category: {
                 id: category,
               },
-              publishedAt: {
-                $ne: null,
-              },
             },
             populate: {
               author: {
@@ -298,9 +295,6 @@ module.exports = {
             filters: {
               blog_category: {
                 id: category,
-              },
-              publishedAt: {
-                $ne: null,
               },
             },
           }),
@@ -322,12 +316,6 @@ module.exports = {
           strapi.entityService.findMany("api::insight.insight", {
             sort: { createdAt: "desc" },
             limit: 3,
-            filters: {
-              publishedAt: {
-                $ne: null,
-              },
-            },
-
             populate: {
               author: { populate: "*" },
               blog_category: true,
